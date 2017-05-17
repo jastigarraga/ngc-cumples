@@ -1,18 +1,24 @@
-<table>
+<table class="ngc-table">
 	<colgroup>
 		<col ng-repeat="col in table.columns" ng-style="{width:col.colWidth}"/>
 	</colgroup>
 	<thead>
 		<tr>
-			<th>Insert</th>
+			<th><span class="btn btn-default"><span class="ngc-icon ngc-icon-plus"></span></span></th>
 		</tr>
 		<tr>
-			<th ng-repeat="col in table.columns">{{(col.header||col.name)}}</th>
+			<th ng-repeat="col in table.columns">{{(col.header || col.name)}}</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="row in table.rows">
-			<td ng-repeat="col in table.columns" ng-include="editIndex=$parent.index?editTemplateUrl:templateUrl"></td>
+			<td ng-repeat="col in table.columns" ng-include="editIndex==$parent.$index?col.editTemplateUrl:col.templateUrl"></td>
+			<td>
+				<span class="btn btn-default" ng-click="setEditIndex($index)" ng-if="$index!=editIndex"><span class="ngc-icon ngc-icon-pencil"></span></span>
+				<span class="btn btn-default" ng-if="$index!=editIndex"><span class="ngc-icon ngc-icon-trash"></span></span>
+				<span class="btn btn-default" ng-if="$index==editIndex"><span class="ngc-icon ngc-icon-check"></span></span>
+				<span class="btn btn-default" ng-click="cancel()" ng-if="$index==editIndex"><span class="ngc-icon ngc-icon-remove"></span></span>
+			</td>
 		</tr>
 	</tbody>
 </table>

@@ -30,7 +30,7 @@ class NGCMigrationManager{
 		}
 		if($database_version < $v){
 			while(count($migrations)>0 && $migrations[0]["version"] <= $database_version){
-				array_shift($migratons);
+				array_shift($migrations);
 			}
 			return $migrations;
 		}

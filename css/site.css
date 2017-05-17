@@ -1,0 +1,60 @@
+@font-face{
+	font-family: FontAwesome;
+	src: url(fonts/fontawesome-webfont.ttf);
+}
+.ngc-icon{
+	font-family: FontAwesome;
+}
+.ngc-icon-plus:before{
+	content: "\f067";	
+    top: 4px;
+}
+.ngc-icon-trash:before {
+  content: "\f1f8";
+}
+.ngc-icon-pencil:before{
+	content: "\f040";
+}
+.btn{
+	padding:.5em 1em;
+}
+.btn:hover{
+	cursor:pointer;
+}
+.btn-default{
+	background-color:#FFF;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+.btn-default:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn-default:hover:active{
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
+}
+.ngc-table tr{
+	height: 2em;
+}
+.ngc-table tr:not(:first-child) th{
+	background-color: #000055;
+	color:white;	
+}
+.ngc-table tr:first-child th{
+	text-align: left;
+}
+.ngc-table tbody tr:nth-child(2n) td:not(:last-child){
+	background-color: #DFDFDF;
+}
+.ngc-icon-check:before {
+  content: "\f00c";
+}
+.ngc-icon-remove:before {
+  content: "\f00d";
+}
+.ngc-input {
+    width: 100%;
+    border-radius: 3px;
+}

@@ -32,7 +32,7 @@ require_once plugin_dir_path(__FILE__) . "ngc-migrations.php";
 $migrationManager = new NGCMigrationManager($wpdb);
 $migrationManager->migrate();
 function ngc_install(){
-	require_once plugin_dir_path(__FILE__) . "ngc-cumples.php";
+	require_once plugin_dir_path(__FILE__) . "ngc-cumples-install.php";
 }
 function ngc_menu(){
 	require_once plugin_dir_path(__FILE__) . "ngc-cumples.menu.php";
@@ -41,6 +41,7 @@ register_activation_hook( __FILE__, 'ngc_install' );
 add_action("admin_menu","ngc_menu");
 add_action( 'rest_api_init', 'ngc_register_wp_api_endpoints' );	
 function ngc_register_wp_api_endpoints(){
+	global $wpdb;
 	require_once plugin_dir_path(__FILE__) . "ngc-cumples.api.php";
 }
 
