@@ -1,0 +1,13 @@
+<div ng-app="ngcApp" ng-controller="ngcMainController">
+	<header>
+		<div class="logo">
+			
+		</div>
+		<ul>
+			<li ng-repeat="item in menu"><a ng-href="#{{item.href}}">{{item.text}}</a></li>
+		</ul>
+	</header>
+	<div ng-view>
+		
+	</div>
+</div>

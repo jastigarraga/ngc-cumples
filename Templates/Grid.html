@@ -1,0 +1,18 @@
+<table>
+	<colgroup>
+		<col ng-repeat="col in table.columns" ng-style="{width:col.colWidth}"/>
+	</colgroup>
+	<thead>
+		<tr>
+			<th>Insert</th>
+		</tr>
+		<tr>
+			<th ng-repeat="col in table.columns">{{(col.header||col.name)}}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="row in table.rows">
+			<td ng-repeat="col in table.columns" ng-include="editIndex=$parent.index?editTemplateUrl:templateUrl"></td>
+		</tr>
+	</tbody>
+</table>
