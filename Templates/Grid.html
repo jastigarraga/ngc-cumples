@@ -4,21 +4,55 @@
 	</colgroup>
 	<thead>
 		<tr>
-			<th><span class="btn btn-default"><span class="ngc-icon ngc-icon-plus"></span></span></th>
+			<th>
+				<span class="btn btn-default" ng-click="showInsertRow()"><span class="ngc-icon ngc-icon-plus"></span></span>
+			</th>
 		</tr>
 		<tr>
 			<th ng-repeat="col in table.columns">{{(col.header || col.name)}}</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="row in table.rows">
+		<tr ng-show="inserting">
+			<td ng-repeat="col in table.columns" ng-include="col.editTemplateUrl"></td>
+			<td>
+				<span class="btn btn-default" ng-click="insert()"><span class="ngc-icon ngc-icon-check"></span></span>
+				<span class="btn btn-default" ng-click="cancel()"><span class="ngc-icon ngc-icon-remove"></span></span>
+			</td>
+		</tr>
+		<tr ng-repeat="row in table.rows track by $index">
 			<td ng-repeat="col in table.columns" ng-include="editIndex==$parent.$index?col.editTemplateUrl:col.templateUrl"></td>
 			<td>
 				<span class="btn btn-default" ng-click="setEditIndex($index)" ng-if="$index!=editIndex"><span class="ngc-icon ngc-icon-pencil"></span></span>
-				<span class="btn btn-default" ng-if="$index!=editIndex"><span class="ngc-icon ngc-icon-trash"></span></span>
-				<span class="btn btn-default" ng-if="$index==editIndex"><span class="ngc-icon ngc-icon-check"></span></span>
+				<span class="btn btn-default" ng-click="delete($index)" ng-if="$index!=editIndex"><span class="ngc-icon ngc-icon-trash"></span></span>
+				<span class="btn btn-default" ng-click="update($index)" ng-if="$index==editIndex"><span class="ngc-icon ngc-icon-check"></span></span>
 				<span class="btn btn-default" ng-click="cancel()" ng-if="$index==editIndex"><span class="ngc-icon ngc-icon-remove"></span></span>
 			</td>
 		</tr>
 	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="{{table.columns.length}}">
+				<div>
+					<span>
+						Resultados por página
+						<select ng-model="table.pageSize" ng-change="read()">
+							<option ng-repeat="size in table.pageSizes" value="{{size.value}}">
+								{{size.text || size.value}}
+							</option>
+						</select>
+					</span>
+					<span>
+						<span class="btn btn-default" ng-if="!table.page || table.page!=1" ng-click="setPage(1)"><span class="ngc-icon ngc-icon-fast-backward"></span></span>
+						<span class="btn btn-default" ng-repeat="page in pages" ng-click="setPage(page)">{{page}}</span>
+						<span class="btn btn-default" ng-if="table.page != pageCount" ng-click="setPage(-1)"><span class="ngc-icon ngc-icon-fast-forward"></span></span>
+					</span>
+					<span>
+						{{table.from}} a {{table.to}} de {{table.total}} <span class="empty-btn ngc-icon ngc-icon-refresh" ng-click="read()"></span>
+					</span>
+				</div>
+			</td>
+		</tr>
+	</tfoot>
 </table>
+<div class="ngc-spinner" ng-if="loading"><span ng-repeat="l in spinnerText track by $index" ng-style="{'animation': 'updown ' + (0.5 + 0.1 * $index) + 's infinite'}">{{l}}</span></div>	

@@ -35,8 +35,15 @@
     background-color: #d4d4d4;
     border-color: #8c8c8c;
 }
+[ngc-grid]{
+	position: relative;
+	display:inline-block;
+}
+.ngc-table{
+	position: relative;
+}
 .ngc-table tr{
-	height: 2em;
+	height: 3em;
 }
 .ngc-table tr:not(:first-child) th{
 	background-color: #000055;
@@ -48,11 +55,63 @@
 .ngc-table tbody tr:nth-child(2n) td:not(:last-child){
 	background-color: #DFDFDF;
 }
+.ngc-table tfoot td>div{
+	width: 100%;
+	display: inline-flex;
+	justify-content: space-between;
+}
+.ngc-table tfoot td>div>span{
+	flex: 1;
+	padding: .2em;
+}
+.ngc-table tfoot td>div>span:last-child{
+	text-align: right;
+}
+[ngc-grid] .ngc-spinner{
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background-color:rgba(255,255,255,0.5);
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	font-size: 32px;
+}
+@keyframes updown{
+	0%{
+		transform: initial;
+	}
+	50%{
+		transform: translateY(10px);
+	}
+	100%{
+		transform: initial;
+	}
+}
+.ngc-spinner span{
+	animation: updown 2s infinite; 
+}
 .ngc-icon-check:before {
   content: "\f00c";
 }
 .ngc-icon-remove:before {
   content: "\f00d";
+}
+.ngc-icon-refresh:before{
+	content: "\f021";
+}
+.ngc-icon-fast-forward:before {
+  content: "\f050";
+}
+.ngc-icon-fast-backward:before {
+  content: "\f049";
+}
+.empty-btn:hover{
+	cursor:pointer;
 }
 .ngc-input {
     width: 100%;
