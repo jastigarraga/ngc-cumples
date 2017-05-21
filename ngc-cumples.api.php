@@ -1,16 +1,49 @@
 <?php
 global $wpdb;	
 $n =  'ngc-api/v1';
+register_rest_route($n,"/MailTemplate",[
+		"methods"=>"GET",
+		"callback"=>function($req){
+			global $wpdb;
+			die(json_encode($wpdb->get_results("SELECT * FROM ngc_template LIMIT 1")));
+		}
+	]);
+register_rest_route($n,"/MailTemplateUpdate",[
+		"methods"=>"POST",
+		"callback"=>function($req){
+			global $wpdb;
+			$params = $req->get_params();
+			$template = esc_sql($params["template"]);
+			$wpdb->query("UPDATE ngc_template SET text = '$template'");
+			die(json_encode($wpdb->get_results("SELECT * FROM ngc_template LIMIT 1")));
+		}
+	]);
 register_rest_route($n,"/Clientes",[
 		"methods"=>"GET",
 		"callback"=>function($req){
 			global $wpdb;
-			$result = [];			$params = $req->get_params();
+			$result = [];			
+			$params = $req->get_params();
+			$filter = json_decode($params["filter"]);
 			$sql = "SELECT * FROM ngc_customer";
+			$where = " WHERE ";
+			$addWhere = function($property,$where,$filter){		
+				if(isset($filter->$property) && $filter->$property != ""){
+					$where .= ($where!=" WHERE "?" AND ":"")."LOWER($property) LIKE LOWER('%" . esc_sql($filter->$property)."%')";
+				}
+				return $where;
+			};
+			$filters = ["name","surname1","surname2","email"];
+			foreach($filters as $f){
+				$where  = $addWhere($f,$where,$filter);
+			}
+			if($where != " WHERE "){
+				$sql .= $where;
+			}
 			if(isset($params["pageSize"]) && $params["pageSize"] != "-1"){
 				$sql .= " LIMIT " .($params["pageSize"] * ($params["page"] - 1).",".$params["pageSize"]);
 			}
-			$result["total"] = $wpdb->get_var("SELECT COUNT(*) FROM ngc_customer");
+			$result["total"] = $wpdb->get_var("SELECT COUNT(*) FROM ngc_customer" . ($where!=" WHERE "?$where:""));
 			$result["data"] = $wpdb->get_results($sql);
 			die(json_encode($result));
 		}

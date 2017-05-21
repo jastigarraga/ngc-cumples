@@ -1,34 +1,38 @@
 function turl(templ){
-	return site_url + "/wp-content/plugins/ngc-cumples/Templates/"+templ;
+	return site_url + "/wp-content/plugins/ngc-cumples/templates/"+templ;
 }
 function apiurl(action){
 	return site_url + "/wp-json/ngc-api/v1/" + action;
 }
 function tediturl(templ){
-	return site_url + "/wp-content/plugins/ngc-cumples/Templates/Editor/"+templ;
+	return site_url + "/wp-content/plugins/ngc-cumples/templates/Editor/"+templ;
 }
 angular.module("ngcApp",["ngRoute","ngAnimate"])
 .config(function($routeProvider){
-	$routeProvider.when("/Editor",{
-		templateUrl:turl("Editor")
+	$routeProvider.when("/Plantilla",{
+		templateUrl:turl("Editor.html"),
+		controller:"ngcPlantillaController"
 	}).when("/Clientes",{
 		templateUrl:turl("Clientes.html"),
 		controller:"ngcClientesController"
 	});
-}).controller("ngcMainController",function($scope){
+}).controller("ngcMainController",["$scope","$window",function($scope,$window){
 	$scope.menu = [{
-		text: "Emails",
-		href:"!/Editor"
-	},{
-		text:"Reemplazos",
-		href:"!/Reemplazos"
+		text: "Plantilla",
+		href:"!/Plantilla"
 	},{
 		text:"Clientes",
-		href:"!/Clientes",
-		controller:"ngcClientesController"
+		href:"!/Clientes"
+	},{
+		text:"Configuración",
+		href:"!/Config"
 	}];
-})
+	$scope.isActive = function(href){
+		return $window.location.hash == "#" + href;
+	};
+}])
 .controller("ngcClientesController",function($scope){
+	$scope.filter = {};
 	function data(d){
 		if(typeof d.date !== "undefined"){
 			d.date = d.date.toLocaleString();
@@ -39,7 +43,11 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 		transport:{
 			read:{
 				url: apiurl("Clientes"),
-				method:"GET"
+				method:"GET",
+				data:function(d){
+					d.filter = $scope.filter;
+					return d;
+				}
 			},
 			insert:{
 				url:apiurl("ClientesInsert"),
@@ -106,7 +114,185 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 			text:"Todos"
 		}]
 	};
+	$scope.search = function(){
+		$scope.gridClientes.read();
+	};
 })
+.controller("ngcPlantillaController",["$scope","$http",function($scope,$http){
+	$scope.plantilla ="<h1>Cargando...</h1>";
+}])
+.directive("ngcEditor",["$http",function($http){
+	return{
+		restrict:"A",
+		require:"ngModel",
+		templateUrl:turl("WYSIWYGEditor.html"),
+		link:function(s,e,a,c){
+			s.iframe = e.find("iframe")[0];
+			s.doc = s.iframe.contentDocument;
+			s.doc.designMode = "on";
+			s.fonts = ["Georgia","Book Antiqua","Times New Roman","Arial","Arial Black","Comic Sans MS","Impact","Tahoma",
+			"Helvetica","Verdana","Courier New","Lucida Console" ];
+			function cmd(evt,command){
+				s.doc.execCommand(command)
+				evt.preventDefault();
+				evt.stopPropagation();
+				s.iframe.focus();
+			}
+			s.fontSizeChange = function(){
+				s.doc.execCommand("fontSize", false, s.fontSize);
+			}
+			s.fontNameChange = function(){
+				s.doc.execCommand("fontName", false, s.fontName);
+			}
+			s.foreColorChange = function(){
+				s.doc.execCommand("foreColor",false, s.foreColor);
+			};
+			c.$render = function(){
+				s.doc.body.innerHTML = c.$viewValue;
+			};
+			s.toolbars = [
+				{
+					buttons:[
+						{
+							icon:"ngc-icon ngc-icon-save",
+							action:function($event){
+								s.save();
+							}
+						},{
+							icon:"ngc-icon ngc-icon-folder",
+							action:function($event){
+								s.load();
+							}
+						}
+					]
+				},{
+					buttons:[
+						{
+							icon:"ngc-icon ngc-icon-undo",
+							action:function($event){
+								cmd($event,"undo");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-redo",
+							action:function($event){
+								cmd($event,"redo");
+							}
+						}
+					]
+				},{
+					buttons:[
+						{
+							icon:"ngc-icon ngc-icon-bold",
+							action:function($event){
+								cmd($event,"bold");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-italic",
+							action:function($event){
+								cmd($event,"italic");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-underline",
+							action:function($event){
+								cmd($event,"underline");
+							}
+						}
+					]
+				},{
+					buttons:[
+						{
+							icon:"ngc-icon ngc-icon-indent",
+							action:function($event){
+								cmd($event,"indent");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-outdent",
+							action:function($event){
+								cmd($event,"outdent");
+							}
+						}
+					]
+				},{
+					buttons:[
+						{
+							icon:"ngc-icon ngc-icon-align-left",
+							action:function($event){
+								cmd($event,"justifyLeft");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-align-center",
+							action:function($event){
+								cmd($event,"justifyCenter");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-align-right",
+							action:function($event){
+								cmd($event,"justifyRight");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-align-justify",
+							action:function($event){
+								cmd($event,"justifyFull");
+							}
+						}
+					]
+				},{
+					buttons:[
+						{
+							icon:"ngc-icon ngc-icon-link",
+							action:function($event){
+								var dir = prompt("Itroduzca la dirección:");
+								if(dir){
+									s.doc.execCommand("createLink", false, dir);
+								}
+							}
+						},{
+							icon:"ngc-icon ngc-icon-unlink",
+							action:function($event){
+								cmd($event,"unlink");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-image",
+							action:function($event){
+								var dir = prompt("Itroduzca la dirección:");
+								if(dir){
+									s.doc.execCommand("insertImage", false, dir);
+								}
+							}
+						},{
+							icon:"ngc-icon ngc-icon-list-ul",
+							action:function($event){
+								cmd($event,"insertUnorderedList");
+							}
+						},{
+							icon:"ngc-icon ngc-icon-list-ol",
+							action:function($event){
+								cmd($event,"insertOrderedList");
+							}
+						},
+					]
+				}
+			];
+			s.load = function(){
+				$http({
+					url:apiurl("MailTemplate")
+				}).then(function(response){
+					s.doc.body.innerHTML = typeof response.data[0] !== "undefined" ?response.data[0].text:"";
+				},function(error){})
+			}
+			s.save = function(){
+				$http({
+					url:apiurl("MailTemplateUpdate"),
+					method:"POST",
+					data:{template:s.doc.body.innerHTML}
+				}).then(function(response){
+					s.doc.body.innerHTML = typeof response.data[0] !== "undefined" ?response.data[0].text:"";
+				},function(error){})
+			};
+			s.load();
+		}
+	}
+}])
 .directive("ngcGrid",["$http",function($http){
 	return{
 		restrict: "A",

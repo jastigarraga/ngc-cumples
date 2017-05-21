@@ -2,6 +2,27 @@
 	font-family: FontAwesome;
 	src: url(fonts/fontawesome-webfont.ttf);
 }
+.ngc-menu{
+	list-style: none;
+	padding:0;
+}
+.ngc-menu li{
+	display: inline-block;
+}
+.ngc-menu a{
+	padding: 1em 2em;
+	text-decoration: none;
+	color:white;
+	background-color: #23282d;
+}
+.ngc-menu a:hover{
+	background:#191e23;
+	color: #0073aa;
+}
+.ngc-menu .active a{
+	background-color: #0073aa !important;
+	color: white !important;
+}
 .ngc-icon{
 	font-family: FontAwesome;
 }
@@ -35,6 +56,26 @@
     background-color: #d4d4d4;
     border-color: #8c8c8c;
 }
+.ngc-float-wrapper{
+	float:left;
+}
+#ngcClientesForm{
+	display: inline-flex;
+	flex-wrap: wrap;
+}
+#ngcClientesForm .form-group{
+	flex: 1 1 50%;
+	display: flex;
+	align-items: center;
+}
+#ngcClientesForm label{
+	flex: 1 1 25%;
+	padding: .2em;
+	text-align: right;
+}
+#ngcClientesForm input{
+	flex: 1 1 75%;
+}
 [ngc-grid]{
 	position: relative;
 	display:inline-block;
@@ -67,6 +108,9 @@
 .ngc-table tfoot td>div>span:last-child{
 	text-align: right;
 }
+.ngc-table .page:not(.btn-default)::before{
+	content: "Pag. ";
+}
 [ngc-grid] .ngc-spinner{
 	position: absolute;
 	top:0;
@@ -80,6 +124,26 @@
 	align-items: center;
 	font-weight: bold;
 	font-size: 32px;
+}
+.ngc-table tr.ng-enter{
+	animation: ngc_table_enter_even .5s; 
+}
+.ngc-table tr.ng-leave{
+	animation: ngc_table_enter_even .5s reverse;
+}
+@keyframes ngc_table_enter_even{
+	0%{
+		position: aboslute;
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	98%{
+		position: relative;
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 @keyframes updown{
 	0%{
@@ -110,10 +174,82 @@
 .ngc-icon-fast-backward:before {
   content: "\f049";
 }
+.ngc-icon-bold:before {
+  content: "\f032";
+}
+.ngc-icon-underline:before {
+  content: "\f0cd";
+}
+.ngc-icon-italic:before {
+  content: "\f033";
+}
+.ngc-icon-outdent:before {
+  content: "\f03b";
+}
+.ngc-icon-align-left:before {
+  content: "\f036";
+}
+.ngc-icon-align-center:before {
+  content: "\f037";
+}
+.ngc-icon-align-right:before {
+  content: "\f038";
+}
+.ngc-icon-align-justify:before {
+  content: "\f039";
+}
+.ngc-icon-list:before {
+  content: "\f03a";
+}
+.ngc-icon-indent:before {
+  content: "\f03c";
+}
+.ngc-icon-undo:before{
+  content: "\f0e2";
+}
+.ngc-icon-link:before {
+  content: "\f0c1";
+}
+.ngc-icon-redo:before{
+	content: "\f01e";
+}
+.ngc-icon-unlink:before{
+	content: "\f127";
+}
+.ngc-icon-image:before {
+  content: "\f1c5";
+}
+.ngc-icon-list-ul:before {
+  content: "\f0ca";
+}
+.ngc-icon-save:before{
+	content: "\f0c7";
+}
+.ngc-icon-folder:before{
+	content: "\f115";
+}
+.ngc-icon-list-ol:before {
+  content: "\f0cb";
+}
 .empty-btn:hover{
 	cursor:pointer;
 }
 .ngc-input {
     width: 100%;
     border-radius: 3px;
+}
+[ngc-editor] iframe{
+	background-color: white;
+}
+[ngc-editor]{
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+[ngc-editor] .toolbar{
+	padding: .75em .75em;
+	background-color: #FCFCFC;
+	display: inline-block;
+	border-left: 2px solid #CBCBCB;
+	border-right: 2px solid #CBCBCB;
 }

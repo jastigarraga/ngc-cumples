@@ -32,7 +32,7 @@ require_once plugin_dir_path(__FILE__) . "ngc-migrations.php";
 $migrationManager = new NGCMigrationManager($wpdb);
 $migrationManager->migrate();
 function ngc_install(){
-	require_once plugin_dir_path(__FILE__) . "ngc-cumples-install.php";
+	require_once plugin_dir_path(__FILE__) . "ngc-cumples.install.php";
 }
 function ngc_menu(){
 	require_once plugin_dir_path(__FILE__) . "ngc-cumples.menu.php";

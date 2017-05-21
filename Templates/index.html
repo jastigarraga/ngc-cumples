@@ -3,8 +3,8 @@
 		<div class="logo">
 			
 		</div>
-		<ul>
-			<li ng-repeat="item in menu"><a ng-href="#{{item.href}}">{{item.text}}</a></li>
+		<ul class="ngc-menu">
+			<li ng-repeat="item in menu" ng-class="isActive(item.href)?'active':''"><a ng-href="#{{item.href}}">{{item.text}}</a></li>
 		</ul>
 	</header>
 	<div ng-view>

@@ -1,3 +1,17 @@
 <div>
-<h1>Editor</h1>
+	<div class="toolbar" ng-repeat="toolbar in toolbars">
+		<span class="btn btn-sm btn-default" ng-repeat="button in toolbar.buttons" ng-click="button.action($event)"><span ng-class="button.icon"></span>{{button.text}}</span>
+	</div>
+	<div class="toolbar">
+		<input type="color" ng-model="foreColor" ng-change="foreColorChange()"/>
+		<select ng-model="fontSize" ng-change="fontSizeChange()">
+			<option ng-repeat="i in [1,2,3,4,5,6,7]" value="{{i}}">{{i}}</option>
+		</select>
+		<select ng-model="fontName" ng-change="fontNameChange()">
+			<option ng-repeat="f in fonts | orderBy" value="{{f}}" ng-style="{'font-family':f}">{{f}}</option>
+		</select>
+	</div>
 </div>
+<iframe contenteditable="true">
+	
+</iframe>
