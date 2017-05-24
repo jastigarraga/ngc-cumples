@@ -15,6 +15,9 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 	}).when("/Clientes",{
 		templateUrl:turl("Clientes.html"),
 		controller:"ngcClientesController"
+	}).when("/Config",{
+		templateUrl:turl("Configuration.html"),
+		contoller:"ngcConfigController"
 	});
 }).controller("ngcMainController",["$scope","$window",function($scope,$window){
 	$scope.menu = [{
@@ -31,6 +34,9 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 		return $window.location.hash == "#" + href;
 	};
 }])
+.controller("ngcClientesController",function($scope){
+	
+})
 .controller("ngcClientesController",function($scope){
 	$scope.filter = {};
 	function data(d){
@@ -125,6 +131,9 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 	return{
 		restrict:"A",
 		require:"ngModel",
+		scope:{
+			html:"=ngModel"
+		},
 		templateUrl:turl("WYSIWYGEditor.html"),
 		link:function(s,e,a,c){
 			s.iframe = e.find("iframe")[0];
@@ -138,6 +147,12 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 				evt.stopPropagation();
 				s.iframe.focus();
 			}
+			s.textMode = function(value){
+				s.htmlMode = !value;
+				if(!value){
+					s.html = s.doc.body.innerHTML;
+				}
+			}
 			s.fontSizeChange = function(){
 				s.doc.execCommand("fontSize", false, s.fontSize);
 			}
@@ -149,6 +164,7 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 			};
 			c.$render = function(){
 				s.doc.body.innerHTML = c.$viewValue;
+
 			};
 			s.toolbars = [
 				{
@@ -454,4 +470,32 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 			s.read();
 		}
 	}
+}])
+.directive("ngcExplorer",["$http",function($http){
+	return {
+		restrict:"A",
+		require:"ngModel",
+		scope:{path:"=ngModel"},
+		templateUrl:turl("ngc-explorer.template.html"),
+		link:function(s,e,a,c){
+			s.fullPath = ".";
+			s.read = function(path){
+				$http({
+					url:apiurl("ListPath"),
+					params:{path:path}
+				}).then(function(response){
+					s.files = response.data.files;
+					s.fullPath = response.data.path;
+				})
+			}
+			s.open = function(file){
+				if(file.type === "dir"){
+					s.read(file.fullpath);
+				}else{
+					s.selected = file;
+				}
+			};
+			s.read(s.fullPath)
+		}
+	};
 }]);

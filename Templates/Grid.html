@@ -1,12 +1,14 @@
 <table class="ngc-table">
 	<colgroup>
 		<col ng-repeat="col in table.columns" ng-style="{width:col.colWidth}"/>
+		<col width="100px"/>
 	</colgroup>
 	<thead>
 		<tr>
 			<th>
 				<span class="btn btn-default" ng-click="showInsertRow()"><span class="ngc-icon ngc-icon-plus"></span></span>
 			</th>
+			<th></th>
 		</tr>
 		<tr>
 			<th ng-repeat="col in table.columns">{{(col.header || col.name)}}</th>

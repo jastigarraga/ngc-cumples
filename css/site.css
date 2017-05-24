@@ -225,8 +225,11 @@
 .ngc-icon-save:before{
 	content: "\f0c7";
 }
-.ngc-icon-folder:before{
+.ngc-icon-folder:before, .ngc-icon-dir:before{
 	content: "\f115";
+}
+.ngc-icon-file:before{
+	content: "\f016";
 }
 .ngc-icon-list-ol:before {
   content: "\f0cb";
@@ -240,16 +243,69 @@
 }
 [ngc-editor] iframe{
 	background-color: white;
+	flex:1 1 300px;
 }
-[ngc-editor]{
+[ngc-editor], [ngc-editor]>div{
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 }
+[ngc-editor]>div{
+	background-color: #FCFCFC;
+	border:1px solid #DBDBDB;
+}
 [ngc-editor] .toolbar{
 	padding: .75em .75em;
-	background-color: #FCFCFC;
 	display: inline-block;
 	border-left: 2px solid #CBCBCB;
 	border-right: 2px solid #CBCBCB;
+}
+[ngc-editor] textarea{
+	resize: none;
+	flex:1 1 350px;
+}
+[ngc-editor] ul{
+	display: flex;
+	margin:0;
+	padding:0;
+}
+[ngc-editor] li:hover{
+	cursor: pointer;
+}
+[ngc-editor] li{
+	margin:0;
+	padding: .5em 1em;
+	background-color: #ebebeb;
+}
+[ngc-editor] li.active{
+	background-color: #FCFCFC;
+	padding-bottom: .7em;
+	transform: translateY(.1em);
+	position: relative;
+	z-index: 1000;
+}
+[ngc-explorer]{
+	width: 300px;
+	display: inline-block;
+	border: 1px solid #343434;
+}
+[ngc-explorer]>p{
+	word-wrap:break-word;
+}
+[ngc-explorer] ul{
+	max-height: 400px;
+	overflow-y: scroll;
+}
+[ngc-explorer] li.ngc-dir:hover{
+	background-color: #434343;
+	color:white;
+	cursor:pointer;
+}
+[ngc-explorer] li.ngc-file:hover{
+	color:highlight;
+	cursor: pointer;
+}
+[ngc-explorer] li.ngc-file.active{
+	background-color: #2222FF;
+	color:white;
 }

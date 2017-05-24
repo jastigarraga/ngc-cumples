@@ -1,0 +1,8 @@
+<p>{{fullPath}}</li>
+<ul>
+	<li ng-repeat="file in files" ng-class="'ngc-'+file.type +' '+(selected.fullpath==file.fullpath?'active':'')" ng-click="open(file)"><span class="ngc-icon" ng-class="'ngc-icon-'+file.type"></span> - {{file.name}}</li>
+</ul>
+<p>Seleccionado: {{selected.name}}</p>
+<div ngcLoadingWrapper="loading">
+
+</div>

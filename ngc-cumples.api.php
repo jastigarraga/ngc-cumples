@@ -1,4 +1,14 @@
 <?php
+class NGCPath{
+	public static function Combine(){
+		$args = func_get_args();
+		$path = "";
+		foreach($args as $dir){
+			$path .=($path==""?"":"/").$dir;
+		}
+		return $path;
+	}
+}
 global $wpdb;	
 $n =  'ngc-api/v1';
 register_rest_route($n,"/MailTemplate",[
@@ -6,6 +16,33 @@ register_rest_route($n,"/MailTemplate",[
 		"callback"=>function($req){
 			global $wpdb;
 			die(json_encode($wpdb->get_results("SELECT * FROM ngc_template LIMIT 1")));
+		}
+	]);
+register_rest_route($n,"/wp_WYSIWYG.html",[
+		"methods"=>"GET",
+		"callback"=>function($req){
+			wp_editor("Contenido","editor",[]);
+		}
+	]);
+register_rest_route($n,"/GetCronConfig",[
+		"methods"=>"GET",
+		"callback"=>function(){
+			global $wpdb;
+			$path = $wpdb->get_var("SELECT value FROM ngc_config WHERE _key = 'ngc_cronta'");
+			if(file_exists($path)){
+				require_once "ngc-cumples.cron.php";
+				$cron = new NGC_Cron();
+				$cron->open($path);
+				return [
+					"isValid"=>true,
+					"path"=>realpath($path),
+					"cron"=>$cron
+				];
+			}
+			return[
+					"isValid"=>false,
+					"path"=>realpath(".")
+				];
 		}
 	]);
 register_rest_route($n,"/MailTemplateUpdate",[
@@ -16,6 +53,27 @@ register_rest_route($n,"/MailTemplateUpdate",[
 			$template = esc_sql($params["template"]);
 			$wpdb->query("UPDATE ngc_template SET text = '$template'");
 			die(json_encode($wpdb->get_results("SELECT * FROM ngc_template LIMIT 1")));
+		}
+	]);
+register_rest_route($n,"/ListPath",[
+		"methods"=>"GET",
+		"callback"=>function($req){
+			$params =  $req->get_params();
+			$path = $params["path"];
+			if(isset($path) && $path !== null){
+				$files = scandir($path);
+				$result = [];
+				foreach($files as $file){
+					$r["name"] = $file;
+					$r["fullpath"] = realpath(NGCPath::Combine($path,$file));
+					$r["type"] = (is_dir($r["fullpath"])?"dir":"file");
+					array_push($result, $r);
+				}
+				return [
+					"path"=>realpath($path),
+					"files"=>$result
+					];
+			}
 		}
 	]);
 register_rest_route($n,"/Clientes",[

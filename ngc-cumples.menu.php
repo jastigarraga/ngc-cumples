@@ -18,8 +18,10 @@ function ngc_add_scripts() {
   wp_enqueue_script("ngcApp");
 }
 add_action("admin_init","ngc_admin_enqueue_styles");
+add_action( 'admin_enqueue_scripts', 'ngc_add_scripts' );
+
 function ngc_admin_enqueue_styles(){
 	wp_enqueue_style("ngcSite",plugins_url('/css/site.css',__FILE__));
 }
-add_action( 'admin_enqueue_scripts', 'ngc_add_scripts' );
-add_menu_page("NaiGallego Cumples", "Nai Cumples", "manage_options", "NaiGallegoCumples","ngc_main");
+
+add_menu_page("NaiGallego Cumples", "Nai Cumples", "manage_options", "NaiGallegoCumples","ngc_main","dashicons-email-alt");
