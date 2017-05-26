@@ -27,22 +27,9 @@ register_rest_route($n,"/wp_WYSIWYG.html",[
 register_rest_route($n,"/GetCronConfig",[
 		"methods"=>"GET",
 		"callback"=>function(){
-			global $wpdb;
-			$path = $wpdb->get_var("SELECT value FROM ngc_config WHERE _key = 'ngc_cronta'");
-			if(file_exists($path)){
-				require_once "ngc-cumples.cron.php";
-				$cron = new NGC_Cron();
-				$cron->open($path);
-				return [
-					"isValid"=>true,
-					"path"=>realpath($path),
-					"cron"=>$cron
-				];
-			}
-			return[
-					"isValid"=>false,
-					"path"=>realpath(".")
-				];
+			require_once "ngc-cumples.cron.php";
+			$cron = new NGC_Cron(realpath(".") . "ngc.cumples.cron.task.php");
+			return $cron->entry->get();
 		}
 	]);
 register_rest_route($n,"/MailTemplateUpdate",[

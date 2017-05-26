@@ -1,5 +1,8 @@
 <?php
 class NGC_Cron_Entry{
+	public function __construct($path){
+		$this->path = $path;
+	}
 	public $minute,$hour,$path;
 	public function render(){
 		return $this->minute . ' '. $this->hour .' * * * ' . $this->path;
@@ -17,58 +20,38 @@ class NGC_Cron_Entry{
 		}
 		return false;
 	}
-}
-class NGC_Cron{
-	private $content;
-	private $path;
-	public $entry;
-	const INIT = "#<NGC-CRONTAB>", END ="#</NGC-CRONTAB>";
-	public function __construct(){
-		$this->entry = new NGC_Cron_Entry();
-	}
-	public function open($path){
-		$this->path = $path;
-		$this->content = null;
-		if(file_exists($path)){
-			$flag_found = 0;
-			$this->content =[];
-			$file = fopen($path, "r");
-			while(($line = fgets($file)) !== false){
-				if($flag_found !== 1){
-					if($flag_found !== 2){
-						if(strpos($line,NGC_Cron::INIT) !== false){
-							$flag_found = 1;
-						}else{
-							array_push($this->content,$line);
-						}
-					}else{
-						array_push($this->content,$line);
-					}
-				}else{
-					if(strpos($line,NGC_Cron::END) !== false){
-							$flag_found = 2;
-					}else{
-						$this->entry->parse($line);
-					}	
-				}
-			}
-			fclose($file);
-		}
-	}
-	public function isValid(){
-		return isset($this->content) && $this->content !== null;
-	}
-	public function apply(){
+	public function get(){
 		
 	}
-	public function render(){
-		$result ="";
-		foreach ($this->content as $line) {
-			$result .= $line;
+}
+class NGC_Cron{
+	private $content=[];
+	private $path;
+	public $entry;
+	public function __construct($path){
+		$reult = [];
+		$this->entry = new NGC_Cron_Entry($path);
+		$this->path == $path;
+		shell_exec("crontab -l",$result);
+		foreach($this->content as $entry){
+			$p = explode(" * * * ",$path);
+			if(isset($p[1]) && $path == $p){
+				$entry->parse($entry);
+			}else{
+				array_push($result, $entry);
+			}
 		}
-		$result .= NGC_Cron::INIT . PHP_EOL;
-		$result .= $this->entry->render();
-		$result .= NGC_Cron::END;
-		return $result;
+		$this->content = $result;
+	}
+	public function apply(){
+		exec("touch crontab.tmp");
+		exec("echo <<EOT >> crontab.tmp");
+		foreach($this->content as $e){
+			exec("echo \"$e\"");
+		}
+		exec("echo \"".$this->entry->render()."\"");
+		exec("EOT");
+		exec("crontab crontab.tmp");
+		exe("rm crontab.tmp");
 	}
 }
