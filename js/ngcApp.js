@@ -17,9 +17,10 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 		controller:"ngcClientesController"
 	}).when("/Config",{
 		templateUrl:turl("Configuration.html"),
-		contoller:"ngcConfigController"
+		controller:"ngcConfigController"
 	});
-}).controller("ngcMainController",["$scope","$window",function($scope,$window){
+})
+.controller("ngcMainController",["$scope","$window",function($scope,$window){
 	$scope.menu = [{
 		text: "Plantilla",
 		href:"!/Plantilla"
@@ -34,9 +35,6 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 		return $window.location.hash == "#" + href;
 	};
 }])
-.controller("ngcClientesController",function($scope){
-	
-})
 .controller("ngcClientesController",function($scope){
 	$scope.filter = {};
 	function data(d){
@@ -105,6 +103,12 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 				colWidth:"140px",
 				templateUrl:tediturl("BaseDateTemplate.html"),
 				editTemplateUrl:tediturl("BaseDateEditTemplate.html")
+			},{
+				name:"last_sent",
+				header:"Enviado en",
+				colWidth:"140px",
+				templateUrl:tediturl("BaseDateTemplate.html"),
+				editTemplateUrl:tediturl("BaseDateTemplate.html")
 			}
 		],
 		pageSize:"5",
@@ -126,6 +130,46 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 })
 .controller("ngcPlantillaController",["$scope","$http",function($scope,$http){
 	$scope.plantilla ="<h1>Cargando...</h1>";
+}])
+.controller("ngcConfigController",["$scope","$http",function($scope,$http){
+	function load(){
+		$scope.loading = true;
+		$http({
+			url:apiurl("GetConfig")
+		})
+		.then(function(response){
+			$scope.mail = response.data.mail;
+			$scope.cron = response.data.cron;
+			$scope.loading = false;
+		},function(error){})
+	}
+	load();
+	$scope.checkMailConfig = function(){
+		$scope.loading = true;
+		$scope.emailConfigForm.$setSubmitted(true);
+		if($scope.emailConfigForm.$valid){
+			$http({
+				url:apiurl("CheckMailConfig"),
+				method:"POST",
+				data:$scope.mail
+			}).then(function(){
+				$scope.loading = false;
+			},function(){
+				$scope.loading = false;
+			})
+		}
+	};
+	$scope.saveMail = function(){
+		$scope.loading = true;
+		$scope.emailConfigForm.$setSubmitted(true);
+		if($scope.emailConfigForm.$valid){
+			$http({
+				url:apiurl("SaveMailConfig"),
+				method:"POST",
+				data:$scope.mail
+			}).then(load);
+		}
+	};
 }])
 .directive("ngcEditor",["$http",function($http){
 	return{
@@ -496,6 +540,28 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 				}
 			};
 			s.read(s.fullPath)
+		}
+	};
+}])
+.directive("ngcLoading",["$http",function($http){
+	return{
+		restrict:"A",
+		require:"ngModel",
+		scope:{
+			ngcLoading:"=ngcName",
+			loading:"=ngModel"
+		},
+		templateUrl:turl("ngc-loading.template.html"),
+		link:function(s,e,a){
+			s.word = (a.ngcLoadingWord || "Cargando...");
+			s.ngcLoading = {
+				show:function(){
+					s.loading = true;
+				},
+				hide:function(){
+					s.loading = false;
+				}
+			};
 		}
 	};
 }]);

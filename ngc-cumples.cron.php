@@ -21,7 +21,10 @@ class NGC_Cron_Entry{
 		return false;
 	}
 	public function get(){
-		
+		return [
+			"h"=>(isset($this->hour)?$this->hour:null),
+			"m"=>(isset($this->minute)?$this->minute:null)
+		];
 	}
 }
 class NGC_Cron{
@@ -32,7 +35,7 @@ class NGC_Cron{
 		$reult = [];
 		$this->entry = new NGC_Cron_Entry($path);
 		$this->path == $path;
-		shell_exec("crontab -l",$result);
+		exec("crontab -l",$result);
 		foreach($this->content as $entry){
 			$p = explode(" * * * ",$path);
 			if(isset($p[1]) && $path == $p){

@@ -1,0 +1,4 @@
+<div class="ngc-loading-background" ng-show="loading"></div>
+<div class="ngc-loading-wrapper" ng-show="loading">
+	<span class="ngc-icon ngc-icon-clock" style:"animation-delay:.1s"></span> <span ng-repeat="l in word track by $index" ng-style="{'animation-delay':'.'+($index+2)+'s'}">{{l}}</span>
+</div>

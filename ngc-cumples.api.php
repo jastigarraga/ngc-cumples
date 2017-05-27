@@ -18,18 +18,42 @@ register_rest_route($n,"/MailTemplate",[
 			die(json_encode($wpdb->get_results("SELECT * FROM ngc_template LIMIT 1")));
 		}
 	]);
-register_rest_route($n,"/wp_WYSIWYG.html",[
-		"methods"=>"GET",
+register_rest_route($n,"/SaveMailConfig",[
+		"methods"=>"POST",
 		"callback"=>function($req){
-			wp_editor("Contenido","editor",[]);
+			global $wpdb;
+			$keys = ["mail_smtp","mail_port","mail_from","mail_user","mail_pass","mail_pass","mail_secur"];
+			$values = $req->get_params();
+			foreach ($keys as $key) {
+				if(isset($values[$key])){
+					$val = $values[$key];
+					$wpdb->query("REPLACE ngc_config (_key,value) VALUES ('$key','$val')");
+				}
+			}
 		}
 	]);
-register_rest_route($n,"/GetCronConfig",[
+register_rest_route($n,"/CheckMailConfig",[
+		"methods"=>"POST",
+		"callback"=>function($req){
+			require_once plugin_dir_path(__FILE__) . "ngc-cumples.mail.php";
+			$config = $req->get_params();
+			return NGC_Mail_Manager::check($config);
+		}
+	]);
+register_rest_route($n,"/GetConfig",[
 		"methods"=>"GET",
 		"callback"=>function(){
+			global $wpdb;
 			require_once "ngc-cumples.cron.php";
+			$conf = [];
+			$conf["mail"] = ["name"=>"mail"];
+			$mailconf = $wpdb->get_results("SELECT * FROM ngc_config WHERE _key LIKE 'mail_%'");
+			foreach ($mailconf as $entry) {
+				$conf["mail"][$entry->_key] = $entry->value;
+			}
 			$cron = new NGC_Cron(realpath(".") . "ngc.cumples.cron.task.php");
-			return $cron->entry->get();
+			$conf["cron"] = $cron->entry->get();
+			return $conf;
 		}
 	]);
 register_rest_route($n,"/MailTemplateUpdate",[
@@ -70,7 +94,7 @@ register_rest_route($n,"/Clientes",[
 			$result = [];			
 			$params = $req->get_params();
 			$filter = json_decode($params["filter"]);
-			$sql = "SELECT * FROM ngc_customer";
+			$sql = "SELECT idCustomer, name, surname1,surname2,email, DATE_FORMAT( date , '%d/%m/%Y')  AS date, DATE_FORMAT(last_sent, '%d/%m/%Y') AS last_sent, email FROM ngc_customer";
 			$where = " WHERE ";
 			$addWhere = function($property,$where,$filter){		
 				if(isset($filter->$property) && $filter->$property != ""){

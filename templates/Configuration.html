@@ -1,12 +1,56 @@
-<form name="emailConfigForm">
-	<div clas="form-group">
+<div class="conf-container">
+<div ngc-loading ngc-name="ngcLoading" ng-model="loading"></div>
+<form name="emailConfigForm" class="conf-form">
+<h2>Configuración de correo</h2>
+	<div class="form-group">
 		<label for="smtp">STMP</label>
-		<input type="text" ng-model="config.smtp"/>
+		<input ng-required="true" type="text" name="smtp" ng-model="mail.mail_smtp"/>
+		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.smtp.$touched) && !emailConfigForm.smtp.$valid">El campo SMTP es requerido</span>
 	</div>
 	<div class="form-group">
-		<label></label>
+		<label for="port">Puerto</label>
+		<input type="text" ng-required="true" name="port" ng-model="mail.mail_port"/>
+		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.port.$touched) && !emailConfigForm.port.$valid">El campo puerto es requerido</span>
+	</div>
+	<div class="form-group">
+		<label for="from">Correo</label>
+		<input type="email" name="mail" ng-required="true" ng-model="mail.mail_from"/>
+		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.mail.$touched) && emailConfigForm.mail.$error.required">El campo correo es obligatorio</span>
+		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.mail.$touched) && emailConfigForm.mail.$error.email">El campo correo tiene que ser una dirección válida</span>
+	</div>
+	<div class="form-group">
+		<label>Usuario</label>
+		<input type="text" ng-required="true" name="usr" ng-model="mail.mail_user"/>
+		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.usr.$touched) && !emailConfigForm.usr.$valid">El campo usuario es requerido</span>
+	</div>
+	<div class="form-group">
+		<label>Contraseña</label>
+		<input type="password" name="pass" ng-required="true" ng-model="mail.mail_pass"/>
+		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.pass.$touched) && !emailConfigForm.pass.$valid">El campo contraseña es requerido</span>
+	</div>
+	<div class="form-group">
+		<label>Seguirdad</label>
+		<select ng-model="mail.mail_secur">
+			<option></option>
+			<option>tsl</option>
+			<option>ssl</option>
+		</select>
+	</div>
+	<div class="btn-container">
+		<span ng-click="checkMailConfig()" class="btn btn-default">Comprobar</span>
+		<span ng-click="saveMail()" class="btn btn-default">Guardar</span>
 	</div>
 </form>
-<form name="cronConfiguration">
-	<div ngc-explorer ng-model="cron.path"></div>
+<form name="cronConfiguration" class="conf-form">
+	<h2>Configuración Cron</h2>
+	<div class="form-group">
+		<label for="h">Hora</label>
+		<input type="time" ng-model="h"/>
+	</div>
+	<div class="form-group">
+		<label>Intentos</label>
+		<input type="number"/>
+	</div>
+	<span ng-click="saveCron()" class="btn btn-default">Guardar</span>
 </form>
+</div>
