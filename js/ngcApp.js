@@ -18,7 +18,7 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 	}).when("/Config",{
 		templateUrl:turl("Configuration.html"),
 		controller:"ngcConfigController"
-	});
+	}).otherwise("/Clientes");
 })
 .controller("ngcMainController",["$scope","$window",function($scope,$window){
 	$scope.menu = [{
@@ -361,7 +361,7 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 					s.doc.body.innerHTML = typeof response.data.template !== "undefined" ?response.data.template:"";
 					s.subject = response.data.subject;
 				},function(error){
-					
+
 				})
 			};
 			s.load();

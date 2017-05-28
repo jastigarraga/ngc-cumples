@@ -5,5 +5,6 @@ class AddConfig extends NGCMigration{
 					_key VARCHAR(10) PRIMARY KEY,
 					value TEXT
 				)");
+		$this->db->query("INSERT INTO ngc_config VALUES ('subject','Felicidades {{0}}!')");
 	}
 }

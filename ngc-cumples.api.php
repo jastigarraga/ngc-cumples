@@ -97,7 +97,7 @@ register_rest_route($n,"/GetConfig",[
 			foreach ($mailconf as $entry) {
 				$conf["mail"][$entry->_key] = $entry->value;
 			}
-			$cron = new NGC_Cron(realpath(".") . "ngc.cumples.cron.task.php");
+			$cron = new NGC_Cron("curl ".site_url()."/wp-json/ngc-api/v1/ServiceStart");
 			if(isset($cron->entry)){
 				$conf["cron"] = $cron->entry->get();
 			}

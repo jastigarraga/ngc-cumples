@@ -11,18 +11,21 @@ function ngc_main(){
     if(is_admin()){
         session_start();
         $session_id = session_id();
-        die(var_dump($wpdb->query("REPLACE INTO ngc_session (session_id) VALUES ('$session_id')")));
+        $wpdb->query("REPLACE INTO ngc_session (session_id) VALUES ('$session_id')");
     }
 }
 function ngc_add_scripts() {
-  wp_register_script( 'angularjs', plugins_url('/js/angular.min.js',__FILE__));
-  wp_register_script( 'ngAnimate', plugins_url('/js/angular-animate.min.js',__FILE__),["angularjs"]);
-  wp_register_script( 'ngRoute', plugins_url('/js/angular-route.min.js',__FILE__),["angularjs"]);
-  wp_register_script( 'ngcApp', plugins_url('/js/ngcApp.js',__FILE__),["angularjs"]);
-  wp_enqueue_script("angularjs");
-  wp_enqueue_script("ngAnimate");
-  wp_enqueue_script("ngRoute");
-  wp_enqueue_script("ngcApp");
+    global $pagenow;
+    if($pagenow === "admin.php" && $_GET["page"] === "NaiGallegoCumples") {
+        wp_register_script('angularjs', plugins_url('/js/angular.min.js', __FILE__));
+        wp_register_script('ngAnimate', plugins_url('/js/angular-animate.min.js', __FILE__), ["angularjs"]);
+        wp_register_script('ngRoute', plugins_url('/js/angular-route.min.js', __FILE__), ["angularjs"]);
+        wp_register_script('ngcApp', plugins_url('/js/ngcApp.js', __FILE__), ["angularjs"]);
+        wp_enqueue_script("angularjs");
+        wp_enqueue_script("ngAnimate");
+        wp_enqueue_script("ngRoute");
+        wp_enqueue_script("ngcApp");
+    }
 }
 add_action("admin_init","ngc_admin_enqueue_styles");
 add_action( 'admin_enqueue_scripts', 'ngc_add_scripts' );

@@ -27,14 +27,17 @@ class NGC_Cron_Entry{
 		];
 	}
 }
-class NGC_Cron{
+class NGC_Cron {
 	private $content=[];
 	private $path;
 	public $entry,$tries = 1,$interval = 20;
 	public function __construct($path){
 		$result = [];
 		$this->path = $path;
-		exec("crontab -l",$this->content);
+		$status=0;
+		exec("crontab -l | grep \"".$this->path."\"",$this->content,$status);
+		var_dump($this->content);
+		die($status);
 		foreach($this->content as $entry){
 			$p = explode(" * * * ",$path);
 			if(isset($p[1]) && $path == $p && !isset($this->entry)){
