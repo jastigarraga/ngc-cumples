@@ -4,7 +4,7 @@ class NGC_Cron_Entry{
 		$this->path = $path;
 	}
 	public $minute,$hour,$path;
-	public function render(){
+	public function render($try=1,$interval=20){
 		return $this->minute . ' '. $this->hour .' * * * ' . $this->path;
 
 	}
@@ -30,16 +30,16 @@ class NGC_Cron_Entry{
 class NGC_Cron{
 	private $content=[];
 	private $path;
-	public $entry;
+	public $entry,$tries = 1,$interval = 20;
 	public function __construct($path){
-		$reult = [];
-		$this->entry = new NGC_Cron_Entry($path);
-		$this->path == $path;
-		exec("crontab -l",$result);
+		$result = [];
+		$this->path = $path;
+		exec("crontab -l",$this->content);
 		foreach($this->content as $entry){
 			$p = explode(" * * * ",$path);
-			if(isset($p[1]) && $path == $p){
-				$entry->parse($entry);
+			if(isset($p[1]) && $path == $p && !isset($this->entry)){
+				$this->entry = new NGC_Cron_Entry($path);
+				$this->entry->parse($entry);
 			}else{
 				array_push($result, $entry);
 			}
@@ -48,13 +48,6 @@ class NGC_Cron{
 	}
 	public function apply(){
 		exec("touch crontab.tmp");
-		exec("echo <<EOT >> crontab.tmp");
-		foreach($this->content as $e){
-			exec("echo \"$e\"");
-		}
-		exec("echo \"".$this->entry->render()."\"");
-		exec("EOT");
-		exec("crontab crontab.tmp");
-		exe("rm crontab.tmp");
+		die(shell_exec("ls"));
 	}
 }

@@ -27,6 +27,7 @@ along with NaiGalleco Cumples Plugin. If not, see https://www.gnu.org/licenses/g
 if(!function_exists("add_action")){
 	die("No se puede ejecutar el plugin sin wordpress");
 }
+error_reporting( E_ALL );
 global $wpdb;
 require_once plugin_dir_path(__FILE__) . "ngc-migrations.php";
 $migrationManager = new NGCMigrationManager($wpdb);

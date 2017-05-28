@@ -3,13 +3,18 @@
 <form name="emailConfigForm" class="conf-form">
 <h2>Configuración de correo</h2>
 	<div class="form-group">
+		<label>Nombre</label>
+		<input type="text" ng-model="mail.mail_name" ng-required="true" name="name"/>
+		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.name.$touched) && !emailConfigForm.name.$valid">El campo Nombre es obligatorio</span>
+	</div>
+	<div class="form-group">
 		<label for="smtp">STMP</label>
 		<input ng-required="true" type="text" name="smtp" ng-model="mail.mail_smtp"/>
 		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.smtp.$touched) && !emailConfigForm.smtp.$valid">El campo SMTP es requerido</span>
 	</div>
 	<div class="form-group">
 		<label for="port">Puerto</label>
-		<input type="text" ng-required="true" name="port" ng-model="mail.mail_port"/>
+		<input type="number" ng-required="true" name="port" ng-model="mail.mail_port"/>
 		<span class="validation-error" ng-show="(emailConfigForm.$submitted || emailConfigForm.port.$touched) && !emailConfigForm.port.$valid">El campo puerto es requerido</span>
 	</div>
 	<div class="form-group">
@@ -44,8 +49,8 @@
 <form name="cronConfiguration" class="conf-form">
 	<h2>Configuración Cron</h2>
 	<div class="form-group">
-		<label for="h">Hora</label>
-		<input type="time" ng-model="h"/>
+		<label for="ngc_cron_h">Hora</label>
+		<input type="time" id="ngc_cron_h" ng-model="cron.h"/>
 	</div>
 	<div class="form-group">
 		<label>Intentos</label>

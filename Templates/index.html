@@ -1,8 +1,5 @@
 <div ng-app="ngcApp" ng-controller="ngcMainController">
 	<header>
-		<div class="logo">
-			
-		</div>
 		<ul class="ngc-menu">
 			<li ng-repeat="item in menu" ng-class="isActive(item.href)?'active':''"><a ng-href="#{{item.href}}">{{item.text}}</a></li>
 		</ul>

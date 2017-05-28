@@ -1,4 +1,15 @@
 <?php
+function require_session(){
+	global $wpdb;
+	session_start();
+	$session_id = session_id();
+	$wpdb->query("DELETE FROM ngc_session WHERE time < DATE_SUB(NOW(),INTERVAL 20 MINUTE )");
+	$has_session = $wpdb->get_var("SELECT COUNT(*) FROM ngc_session WHERE session_id = '$session_id'");
+	if(!$has_session){
+		status_header(403);
+		die();
+	}
+}
 class NGCPath{
 	public static function Combine(){
 		$args = func_get_args();
@@ -9,20 +20,24 @@ class NGCPath{
 		return $path;
 	}
 }
-global $wpdb;	
 $n =  'ngc-api/v1';
 register_rest_route($n,"/MailTemplate",[
 		"methods"=>"GET",
 		"callback"=>function($req){
+			require_session();
 			global $wpdb;
-			die(json_encode($wpdb->get_results("SELECT * FROM ngc_template LIMIT 1")));
+			return [
+				"template"=>$wpdb->get_var("SELECT text FROM ngc_template LIMIT 1"),
+				"subject"=>$wpdb->get_var("SELECT value FROM ngc_config WHERE _key='subject'")
+			];
 		}
 	]);
 register_rest_route($n,"/SaveMailConfig",[
 		"methods"=>"POST",
 		"callback"=>function($req){
+			require_session();
 			global $wpdb;
-			$keys = ["mail_smtp","mail_port","mail_from","mail_user","mail_pass","mail_pass","mail_secur"];
+			$keys = ["mail_smtp","mail_port","mail_from","mail_user","mail_pass","mail_pass","mail_secur","mail_name"];
 			$values = $req->get_params();
 			foreach ($keys as $key) {
 				if(isset($values[$key])){
@@ -35,14 +50,45 @@ register_rest_route($n,"/SaveMailConfig",[
 register_rest_route($n,"/CheckMailConfig",[
 		"methods"=>"POST",
 		"callback"=>function($req){
+			require_session();
 			require_once plugin_dir_path(__FILE__) . "ngc-cumples.mail.php";
 			$config = $req->get_params();
 			return NGC_Mail_Manager::check($config);
 		}
 	]);
+register_rest_route($n,"/SaveCronConfig",[
+	"methods"=>"POST",
+	"callback"=>function($req){
+		require_session();
+		require_once plugin_dir_path(__FILE__) . "ngc-cumples.cron.php";
+		$config = $req->get_params();
+		$cron = new NGC_Cron(realpath(".") . "ngc.cumples.cron.task.php");
+		if(!isset($cron->entry)){
+			$cron->entry = new NGC_Cron_Entry(realpath(".") . "ngc.cumples.cron.task.php");
+		}
+		$time = explode(":",$config["h"]);
+		$h = $time[0];
+		$m = $time[1];
+		$cron->entry->hour = $h;
+		$cron->entry->minute = $m;
+		$cron->apply();
+		$cron = new NGC_Cron(realpath(".") . "ngc.cumples.cron.task.php");
+		return $cron;
+	}
+]);
+register_rest_route($n,"/ServiceStart",[
+	"methods"=>"GET",
+	"callback"=>function($req){
+		global $wpdb;
+		require_once plugin_dir_path(__FILE__) . "ngc-cumples.mail.php";
+		return NGC_Mail_Manager::run($wpdb);
+
+	}
+]);
 register_rest_route($n,"/GetConfig",[
 		"methods"=>"GET",
 		"callback"=>function(){
+			require_session();
 			global $wpdb;
 			require_once "ngc-cumples.cron.php";
 			$conf = [];
@@ -52,23 +98,32 @@ register_rest_route($n,"/GetConfig",[
 				$conf["mail"][$entry->_key] = $entry->value;
 			}
 			$cron = new NGC_Cron(realpath(".") . "ngc.cumples.cron.task.php");
-			$conf["cron"] = $cron->entry->get();
+			if(isset($cron->entry)){
+				$conf["cron"] = $cron->entry->get();
+			}
 			return $conf;
 		}
 	]);
 register_rest_route($n,"/MailTemplateUpdate",[
 		"methods"=>"POST",
 		"callback"=>function($req){
+			require_session();
 			global $wpdb;
 			$params = $req->get_params();
 			$template = esc_sql($params["template"]);
+			$subject = esc_sql($params["subject"]);
+			$wpdb->query("REPLACE INTO ngc_config (_key,value) VALUES ('subject','$subject')");
 			$wpdb->query("UPDATE ngc_template SET text = '$template'");
-			die(json_encode($wpdb->get_results("SELECT * FROM ngc_template LIMIT 1")));
+			return [
+				"template"=>$wpdb->get_var("SELECT text FROM ngc_template LIMIT 1"),
+				"subject"=>$wpdb->get_var("SELECT value FROM ngc_config WHERE _key='subject'")
+			];
 		}
 	]);
 register_rest_route($n,"/ListPath",[
 		"methods"=>"GET",
 		"callback"=>function($req){
+			require_session();
 			$params =  $req->get_params();
 			$path = $params["path"];
 			if(isset($path) && $path !== null){
@@ -90,6 +145,7 @@ register_rest_route($n,"/ListPath",[
 register_rest_route($n,"/Clientes",[
 		"methods"=>"GET",
 		"callback"=>function($req){
+			require_session();
 			global $wpdb;
 			$result = [];			
 			$params = $req->get_params();

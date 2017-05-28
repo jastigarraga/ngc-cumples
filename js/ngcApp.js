@@ -138,7 +138,11 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 			url:apiurl("GetConfig")
 		})
 		.then(function(response){
-			$scope.mail = response.data.mail;
+			var mailConf = response.data.mail;
+			if(typeof mailConf.mail_port !== "undefined"){
+				mailConf.mail_port = Number(mailConf.mail_port);
+			}
+			$scope.mail = mailConf;
 			$scope.cron = response.data.cron;
 			$scope.loading = false;
 		},function(error){})
@@ -170,6 +174,13 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 			}).then(load);
 		}
 	};
+	$scope.saveCron = function(){
+		$http({
+			url:apiurl("SaveCronConfig"),
+			method:"POST",
+			data:{h:angular.element("#ngc_cron_h").val()}
+		}).then(load);
+	};
 }])
 .directive("ngcEditor",["$http",function($http){
 	return{
@@ -186,7 +197,7 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 			s.fonts = ["Georgia","Book Antiqua","Times New Roman","Arial","Arial Black","Comic Sans MS","Impact","Tahoma",
 			"Helvetica","Verdana","Courier New","Lucida Console" ];
 			function cmd(evt,command){
-				s.doc.execCommand(command)
+				s.doc.execCommand(command);
 				evt.preventDefault();
 				evt.stopPropagation();
 				s.iframe.focus();
@@ -196,13 +207,13 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 				if(!value){
 					s.html = s.doc.body.innerHTML;
 				}
-			}
+			};
 			s.fontSizeChange = function(){
 				s.doc.execCommand("fontSize", false, s.fontSize);
-			}
+			};
 			s.fontNameChange = function(){
 				s.doc.execCommand("fontName", false, s.fontName);
-			}
+			};
 			s.foreColorChange = function(){
 				s.doc.execCommand("foreColor",false, s.foreColor);
 			};
@@ -329,7 +340,7 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 							action:function($event){
 								cmd($event,"insertOrderedList");
 							}
-						},
+						}
 					]
 				}
 			];
@@ -337,17 +348,21 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 				$http({
 					url:apiurl("MailTemplate")
 				}).then(function(response){
-					s.doc.body.innerHTML = typeof response.data[0] !== "undefined" ?response.data[0].text:"";
+					s.doc.body.innerHTML = typeof response.data.template !== "undefined" ?response.data.template:"";
+					s.subject = response.data.subject;
 				},function(error){})
-			}
+			};
 			s.save = function(){
 				$http({
 					url:apiurl("MailTemplateUpdate"),
 					method:"POST",
-					data:{template:s.doc.body.innerHTML}
+					data:{template:s.doc.body.innerHTML,subject:s.subject}
 				}).then(function(response){
-					s.doc.body.innerHTML = typeof response.data[0] !== "undefined" ?response.data[0].text:"";
-				},function(error){})
+					s.doc.body.innerHTML = typeof response.data.template !== "undefined" ?response.data.template:"";
+					s.subject = response.data.subject;
+				},function(error){
+					
+				})
 			};
 			s.load();
 		}
@@ -364,7 +379,7 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 		templateUrl:turl("Grid.html"),
 		link: function(s,e,a,c){
 			s.editIndex = -1;
-			s.spinnerText = "Cargando..."
+			s.spinnerText = "Cargando...";
 			s.setEditIndex = function(index){
 				s.inserting = false;
 				s.editIndex = index;
@@ -468,7 +483,7 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 					s.editIndex = -1;
 					s.loading = false;
 				}
-			}
+			};
 			s.read = function(){
 				s.inserting = false;
 				s.editIndex = -1;
@@ -531,7 +546,7 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 					s.files = response.data.files;
 					s.fullPath = response.data.path;
 				})
-			}
+			};
 			s.open = function(file){
 				if(file.type === "dir"){
 					s.read(file.fullpath);

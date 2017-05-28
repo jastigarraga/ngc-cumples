@@ -136,7 +136,7 @@
 }
 @keyframes ngc_table_enter_even{
 	0%{
-		position: aboslute;
+		position: absolute;
 		opacity: 0;
 		transform: translateY(-10px);
 	}
@@ -433,9 +433,19 @@ span.validation-error.ng-hide-remove{
 	animation: rotating 1s infinite;
 	transform-origin: center;
 }
+.editor-wrapper{
+	display: flex;
+	align-items: stretch;
+}
+.editor-wrapper>*:first-child{
+	flex:1
+}
+.editor-wrapper>*:not(:first-child){
+	padding: 2em 1em;
+}
 @keyframes rotating{
 	0%{
-		transform: rotateX(0);
+		transform: rotateX(0deg);
 	}
 	100%{
 		transform: rotateX(360deg);

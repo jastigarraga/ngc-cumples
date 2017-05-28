@@ -2,10 +2,17 @@
 if(!function_exists("add_action")){
 	die("No se puede ejecutar el plugin sin wordpress");
 }
-function ngc_main(){ ?>
-<script> var site_url = "<?php echo site_url(); ?>"; </script>	
+function ngc_main(){
+    global $wpdb;
+    ?>
+<script> var site_url = "<?php echo site_url(); ?>"; </script>
 <?php 
 	readfile(plugin_dir_path(__FILE__)."templates/index.html");
+    if(is_admin()){
+        session_start();
+        $session_id = session_id();
+        die(var_dump($wpdb->query("REPLACE INTO ngc_session (session_id) VALUES ('$session_id')")));
+    }
 }
 function ngc_add_scripts() {
   wp_register_script( 'angularjs', plugins_url('/js/angular.min.js',__FILE__));
