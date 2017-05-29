@@ -62,18 +62,17 @@ register_rest_route($n,"/SaveCronConfig",[
 		require_session();
 		require_once plugin_dir_path(__FILE__) . "ngc-cumples.cron.php";
 		$config = $req->get_params();
-		$cron = new NGC_Cron(realpath(".") . "ngc.cumples.cron.task.php");
-		if(!isset($cron->entry)){
-			$cron->entry = new NGC_Cron_Entry(realpath(".") . "ngc.cumples.cron.task.php");
-		}
+		$cron = new NGC_Cron("curl ".site_url()."/wp-json/ngc-api/v1/ServiceStart");
 		$time = explode(":",$config["h"]);
 		$h = $time[0];
 		$m = $time[1];
-		$cron->entry->hour = $h;
-		$cron->entry->minute = $m;
+		$cron->entry->h = $h;
+		$cron->entry->m = $m;
+		$cron->entry->interval = $config["interval"];
+		$cron->entry->duration = $config["duration"];
 		$cron->apply();
 		$cron = new NGC_Cron(realpath(".") . "ngc.cumples.cron.task.php");
-		return $cron;
+		return $cron->entry->get();
 	}
 ]);
 register_rest_route($n,"/ServiceStart",[

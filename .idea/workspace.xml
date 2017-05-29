@@ -3,12 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d5935a7f-09c3-4028-9442-5fc6c389bd65" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Templates/Editor.html" afterPath="$PROJECT_DIR$/Templates/Editor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Templates/Grid.html" afterPath="$PROJECT_DIR$/Templates/Grid.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Templates/WYSIWYGEditor.html" afterPath="$PROJECT_DIR$/Templates/WYSIWYGEditor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/site.css" afterPath="$PROJECT_DIR$/css/site.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/ngcApp.js" afterPath="$PROJECT_DIR$/js/ngcApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/migrations/003_add_template.php" afterPath="$PROJECT_DIR$/migrations/003_add_template.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/migrations/004_AddConfig.php" afterPath="$PROJECT_DIR$/migrations/004_AddConfig.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngc-cumples.api.php" afterPath="$PROJECT_DIR$/ngc-cumples.api.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngc-cumples.cron.php" afterPath="$PROJECT_DIR$/ngc-cumples.cron.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ngc-cumples.menu.php" afterPath="$PROJECT_DIR$/ngc-cumples.menu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Configuration.html" afterPath="$PROJECT_DIR$/templates/Configuration.html" />
     </list>
     <ignored path="ngc-cumples.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,78 +34,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ngc-migrations.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="26" column="46" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="46" />
-              <folding>
-                <marker date="1495050251339" expanded="true" signature="670:708" placeholder="SELECT MAX(v... ngc_migrations" />
-                <marker date="1495050251339" expanded="true" signature="1336:1422" placeholder="INSERT INTO ngc_migrations... " />
-                <marker date="1495050251339" expanded="true" signature="1369:1422" placeholder="INSERT INTO ngc_migrations... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ngc-cumples.api.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ngc-cumples.api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="99" column="51" selection-start-line="99" selection-start-column="51" selection-end-line="99" selection-end-column="51" />
+            <state relative-caret-position="1241">
+              <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
               <folding>
-                <marker date="1496012609089" expanded="true" signature="111:132" placeholder="DELETE FROM " />
-                <marker date="1496012609089" expanded="true" signature="111:183" placeholder="DELETE FROM " />
-                <marker date="1496012609089" expanded="true" signature="219:284" placeholder="SELECT COUNT... ngc_session" />
-                <marker date="1496012609089" expanded="true" signature="716:753" placeholder="SELECT text ngc_template" />
-                <marker date="1496012609089" expanded="true" signature="788:837" placeholder="SELECT value... ngc_config" />
-                <marker date="1496012609089" expanded="true" signature="2688:2737" placeholder="SELECT * FRO... ngc_config" />
-                <marker date="1496012609089" expanded="true" signature="3372:3414" placeholder="UPDATE ngc_t... " />
-                <marker date="1496012609089" expanded="true" signature="3462:3499" placeholder="SELECT text ngc_template" />
-                <marker date="1496012609089" expanded="true" signature="3534:3583" placeholder="SELECT value... ngc_config" />
-                <marker date="1496012609089" expanded="true" signature="4391:4555" placeholder="SELECT idCus... " />
-                <marker date="1496012609089" expanded="true" signature="5231:5264" placeholder="SELECT COUNT... ngc_customer" />
-                <marker date="1496012609089" expanded="true" signature="7488:7674" placeholder="UPDATE ngc_c... " />
-                <marker date="1496012609089" expanded="true" signature="7737:7781" placeholder="SELECT * FRO... ngc_customer" />
-                <marker date="1496012609089" expanded="true" signature="8126:8305" placeholder="INSERT INTO ngc_customer... " />
-                <marker date="1496012609089" expanded="true" signature="8350:8412" placeholder="SELECT * FRO... ngc_customer" />
-                <marker date="1496012609089" expanded="true" signature="8914:8956" placeholder="DELETE FROM " />
+                <marker date="1496070129636" expanded="true" signature="111:132" placeholder="DELETE FROM " />
+                <marker date="1496070129636" expanded="true" signature="111:183" placeholder="DELETE FROM " />
+                <marker date="1496070129636" expanded="true" signature="219:284" placeholder="SELECT COUNT... ngc_session" />
+                <marker date="1496070129636" expanded="true" signature="716:753" placeholder="SELECT text ngc_template" />
+                <marker date="1496070129636" expanded="true" signature="788:837" placeholder="SELECT value... ngc_config" />
+                <marker date="1496070129636" expanded="true" signature="2685:2734" placeholder="SELECT * FRO... ngc_config" />
+                <marker date="1496070129636" expanded="true" signature="3369:3411" placeholder="UPDATE ngc_t... " />
+                <marker date="1496070129636" expanded="true" signature="3459:3496" placeholder="SELECT text ngc_template" />
+                <marker date="1496070129636" expanded="true" signature="3531:3580" placeholder="SELECT value... ngc_config" />
+                <marker date="1496070129636" expanded="true" signature="4388:4552" placeholder="SELECT idCus... " />
+                <marker date="1496070129636" expanded="true" signature="5228:5261" placeholder="SELECT COUNT... ngc_customer" />
+                <marker date="1496070129636" expanded="true" signature="7485:7671" placeholder="UPDATE ngc_c... " />
+                <marker date="1496070129636" expanded="true" signature="7734:7778" placeholder="SELECT * FRO... ngc_customer" />
+                <marker date="1496070129636" expanded="true" signature="8123:8302" placeholder="INSERT INTO ngc_customer... " />
+                <marker date="1496070129636" expanded="true" signature="8347:8409" placeholder="SELECT * FRO... ngc_customer" />
+                <marker date="1496070129636" expanded="true" signature="8911:8953" placeholder="DELETE FROM " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Editor.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Editor.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="003_add_template.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/migrations/003_add_template.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="173" selection-start-line="6" selection-start-column="173" selection-end-line="6" selection-end-column="173" />
-              <folding>
-                <marker date="1495999239566" expanded="true" signature="90:135" placeholder="CREATE TABLE... ngc_template" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="004_AddConfig.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="004_AddConfig.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/migrations/004_AddConfig.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="88" selection-start-line="7" selection-start-column="88" selection-end-line="7" selection-end-column="88" />
               <folding>
-                <marker date="1495999288304" expanded="true" signature="87:168" placeholder="CREATE TABLE... ngc_config" />
-                <marker date="1495999288304" expanded="true" signature="192:256" placeholder="INSERT INTO ngc_config... " />
+                <marker date="1496035923365" expanded="true" signature="87:168" placeholder="CREATE TABLE... ngc_config" />
+                <marker date="1496035923365" expanded="true" signature="192:255" placeholder="INSERT INTO ngc_config... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ngc-loading.template.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ngc-loading.template.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,36 +87,9 @@
       <file leaf-file-name="ngc-cumples.cron.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ngc-cumples.cron.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
+            <state relative-caret-position="153">
+              <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ngc-cumples.install.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ngc-cumples.install.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ngc-cumples.mail.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ngc-cumples.mail.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-292">
-              <caret line="17" column="32" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="32" />
-              <folding>
-                <marker date="1495995423286" expanded="true" signature="458:507" placeholder="SELECT * FRO... ngc_config" />
-                <marker date="1495995423286" expanded="true" signature="539:576" placeholder="SELECT text ngc_template" />
-                <marker date="1495995423286" expanded="true" signature="607:658" placeholder="SELECT value... ngc_config" />
-                <marker date="1495995423286" expanded="true" signature="695:880" placeholder="SELECT * FRO... ngc_customer" />
-                <marker date="1495995423286" expanded="true" signature="1350:1417" placeholder="UPDATE ngc_c... " />
-                <marker date="1495995423286" expanded="true" signature="1350:1418" placeholder="UPDATE ngc_c... " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -146,18 +97,62 @@
       <file leaf-file-name="ngc-cumples.menu.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ngc-cumples.menu.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="46" />
+            <state relative-caret-position="17">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ngc-cumples.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ngc-cumples.php">
+      <file leaf-file-name="ngcApp.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/ngcApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="40" column="15" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="15" />
+            <state relative-caret-position="3332">
+              <caret line="230" column="35" selection-start-line="230" selection-start-column="35" selection-end-line="230" selection-end-column="35" />
+              <folding>
+                <element signature="e#3879#4183#0" expanded="false" />
+                <element signature="e#4214#4433#0" expanded="false" />
+                <element signature="e#4464#4674#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WYSIWYGEditor.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/WYSIWYGEditor.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Configuration.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Configuration.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1003">
+              <caret line="59" column="14" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Grid.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Grid.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="site.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/site.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="443" column="24" selection-start-line="443" selection-start-column="24" selection-end-line="443" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -174,19 +169,20 @@
         <option value="$PROJECT_DIR$/ngc-migrations.php" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/ngc-cumples.php" />
-        <option value="$PROJECT_DIR$/templates/Grid.html" />
         <option value="$PROJECT_DIR$/ngc-cumples.cron.task.php" />
         <option value="$PROJECT_DIR$/migrations/006_Add_NGC_Session.php" />
-        <option value="$PROJECT_DIR$/templates/Configuration.html" />
-        <option value="$PROJECT_DIR$/css/site.css" />
-        <option value="$PROJECT_DIR$/js/ngcApp.js" />
         <option value="$PROJECT_DIR$/ngc-cumples.mail.php" />
         <option value="$PROJECT_DIR$/templates/Editor.html" />
         <option value="$PROJECT_DIR$/migrations/003_add_template.php" />
         <option value="$PROJECT_DIR$/migrations/004_AddConfig.php" />
         <option value="$PROJECT_DIR$/ngc-cumples.menu.php" />
+        <option value="$PROJECT_DIR$/templates/Grid.html" />
         <option value="$PROJECT_DIR$/ngc-cumples.api.php" />
         <option value="$PROJECT_DIR$/ngc-cumples.cron.php" />
+        <option value="$PROJECT_DIR$/templates/Configuration.html" />
+        <option value="$PROJECT_DIR$/templates/WYSIWYGEditor.html" />
+        <option value="$PROJECT_DIR$/js/ngcApp.js" />
+        <option value="$PROJECT_DIR$/css/site.css" />
       </list>
     </option>
   </component>
@@ -232,6 +228,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -308,7 +305,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,7 +380,9 @@
       <workItem from="1495396495770" duration="9000" />
       <workItem from="1495401195339" duration="12000" />
       <workItem from="1495892410653" duration="1995000" />
-      <workItem from="1495973313631" duration="27326000" />
+      <workItem from="1495973313631" duration="35156000" />
+      <workItem from="1496077895749" duration="5526000" />
+      <workItem from="1496089117580" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="Terminado envio de emails">
       <created>1495996198158</created>
@@ -393,32 +391,39 @@
       <option name="project" value="LOCAL" />
       <updated>1495996198159</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Correcciones varias">
+      <created>1496013553187</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1496013553188</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31385000" />
+    <option name="totallyTimeSpent" value="44758000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20347957" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20953101" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.031096563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.099836335" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -436,251 +441,37 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Terminado envio de emails" />
-    <option name="LAST_COMMIT_MESSAGE" value="Terminado envio de emails" />
+    <MESSAGE value="Correcciones varias" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcciones varias" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <marker date="1495050251339" expanded="true" signature="670:708" placeholder="SELECT MAX(v... ngc_migrations" />
-            <marker date="1495050251339" expanded="true" signature="1336:1422" placeholder="INSERT INTO ngc_migrations... " />
-            <marker date="1495050251339" expanded="true" signature="1369:1422" placeholder="INSERT INTO ngc_migrations... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1495050251339" expanded="true" signature="670:708" placeholder="SELECT MAX(v... ngc_migrations" />
-            <marker date="1495050251339" expanded="true" signature="1336:1422" placeholder="INSERT INTO ngc_migrations... " />
-            <marker date="1495050251339" expanded="true" signature="1369:1422" placeholder="INSERT INTO ngc_migrations... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1495050251339" expanded="true" signature="670:708" placeholder="SELECT MAX(v... ngc_migrations" />
-            <marker date="1495050251339" expanded="true" signature="1336:1422" placeholder="INSERT INTO ngc_migrations... " />
-            <marker date="1495050251339" expanded="true" signature="1369:1422" placeholder="INSERT INTO ngc_migrations... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1495050251339" expanded="true" signature="670:708" placeholder="SELECT MAX(v... ngc_migrations" />
-            <marker date="1495050251339" expanded="true" signature="1336:1422" placeholder="INSERT INTO ngc_migrations... " />
-            <marker date="1495050251339" expanded="true" signature="1369:1422" placeholder="INSERT INTO ngc_migrations... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1495050251339" expanded="true" signature="670:708" placeholder="SELECT MAX(v... ngc_migrations" />
-            <marker date="1495050251339" expanded="true" signature="1336:1422" placeholder="INSERT INTO ngc_migrations... " />
-            <marker date="1495050251339" expanded="true" signature="1369:1422" placeholder="INSERT INTO ngc_migrations... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Grid.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-cumples.cron.task.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/006_Add_NGC_Session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
-          <folding>
-            <marker date="1495987749856" expanded="true" signature="102:258" placeholder="CREATE TABLE... ngc_session" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/WYSIWYGEditor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Configuration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/site.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="138" column="12" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/ngcApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-          <folding>
-            <element signature="e#3591#3895#0" expanded="false" />
-            <marker date="1495998302953" expanded="false" signature="3186:3545" placeholder="{...}" />
-            <marker date="1495998302953" expanded="false" signature="3281:3523" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-cumples.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="40" column="15" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Editor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="26" column="46" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="46" />
-          <folding>
-            <marker date="1495050251339" expanded="true" signature="670:708" placeholder="SELECT MAX(v... ngc_migrations" />
-            <marker date="1495050251339" expanded="true" signature="1336:1422" placeholder="INSERT INTO ngc_migrations... " />
-            <marker date="1495050251339" expanded="true" signature="1369:1422" placeholder="INSERT INTO ngc_migrations... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-cumples.menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-cumples.mail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-292">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="32" />
-          <folding>
-            <marker date="1495995423286" expanded="true" signature="458:507" placeholder="SELECT * FRO... ngc_config" />
-            <marker date="1495995423286" expanded="true" signature="539:576" placeholder="SELECT text ngc_template" />
-            <marker date="1495995423286" expanded="true" signature="607:658" placeholder="SELECT value... ngc_config" />
-            <marker date="1495995423286" expanded="true" signature="695:880" placeholder="SELECT * FRO... ngc_customer" />
-            <marker date="1495995423286" expanded="true" signature="1350:1417" placeholder="UPDATE ngc_c... " />
-            <marker date="1495995423286" expanded="true" signature="1350:1418" placeholder="UPDATE ngc_c... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-cumples.install.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ngc-cumples.api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="99" column="51" selection-start-line="99" selection-start-column="51" selection-end-line="99" selection-end-column="51" />
+        <state relative-caret-position="1241">
+          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
           <folding>
-            <marker date="1496012609089" expanded="true" signature="111:132" placeholder="DELETE FROM " />
-            <marker date="1496012609089" expanded="true" signature="111:183" placeholder="DELETE FROM " />
-            <marker date="1496012609089" expanded="true" signature="219:284" placeholder="SELECT COUNT... ngc_session" />
-            <marker date="1496012609089" expanded="true" signature="716:753" placeholder="SELECT text ngc_template" />
-            <marker date="1496012609089" expanded="true" signature="788:837" placeholder="SELECT value... ngc_config" />
-            <marker date="1496012609089" expanded="true" signature="2688:2737" placeholder="SELECT * FRO... ngc_config" />
-            <marker date="1496012609089" expanded="true" signature="3372:3414" placeholder="UPDATE ngc_t... " />
-            <marker date="1496012609089" expanded="true" signature="3462:3499" placeholder="SELECT text ngc_template" />
-            <marker date="1496012609089" expanded="true" signature="3534:3583" placeholder="SELECT value... ngc_config" />
-            <marker date="1496012609089" expanded="true" signature="4391:4555" placeholder="SELECT idCus... " />
-            <marker date="1496012609089" expanded="true" signature="5231:5264" placeholder="SELECT COUNT... ngc_customer" />
-            <marker date="1496012609089" expanded="true" signature="7488:7674" placeholder="UPDATE ngc_c... " />
-            <marker date="1496012609089" expanded="true" signature="7737:7781" placeholder="SELECT * FRO... ngc_customer" />
-            <marker date="1496012609089" expanded="true" signature="8126:8305" placeholder="INSERT INTO ngc_customer... " />
-            <marker date="1496012609089" expanded="true" signature="8350:8412" placeholder="SELECT * FRO... ngc_customer" />
-            <marker date="1496012609089" expanded="true" signature="8914:8956" placeholder="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ngc-cumples.cron.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/migrations/003_add_template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="173" selection-start-line="6" selection-start-column="173" selection-end-line="6" selection-end-column="173" />
-          <folding>
-            <marker date="1495999239566" expanded="true" signature="90:135" placeholder="CREATE TABLE... ngc_template" />
+            <marker date="1496070129636" expanded="true" signature="111:132" placeholder="DELETE FROM " />
+            <marker date="1496070129636" expanded="true" signature="111:183" placeholder="DELETE FROM " />
+            <marker date="1496070129636" expanded="true" signature="219:284" placeholder="SELECT COUNT... ngc_session" />
+            <marker date="1496070129636" expanded="true" signature="716:753" placeholder="SELECT text ngc_template" />
+            <marker date="1496070129636" expanded="true" signature="788:837" placeholder="SELECT value... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="2685:2734" placeholder="SELECT * FRO... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="3369:3411" placeholder="UPDATE ngc_t... " />
+            <marker date="1496070129636" expanded="true" signature="3459:3496" placeholder="SELECT text ngc_template" />
+            <marker date="1496070129636" expanded="true" signature="3531:3580" placeholder="SELECT value... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="4388:4552" placeholder="SELECT idCus... " />
+            <marker date="1496070129636" expanded="true" signature="5228:5261" placeholder="SELECT COUNT... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="7485:7671" placeholder="UPDATE ngc_c... " />
+            <marker date="1496070129636" expanded="true" signature="7734:7778" placeholder="SELECT * FRO... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="8123:8302" placeholder="INSERT INTO ngc_customer... " />
+            <marker date="1496070129636" expanded="true" signature="8347:8409" placeholder="SELECT * FRO... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="8911:8953" placeholder="DELETE FROM " />
           </folding>
         </state>
       </provider>
@@ -690,9 +481,383 @@
         <state relative-caret-position="119">
           <caret line="7" column="88" selection-start-line="7" selection-start-column="88" selection-end-line="7" selection-end-column="88" />
           <folding>
-            <marker date="1495999288304" expanded="true" signature="87:168" placeholder="CREATE TABLE... ngc_config" />
-            <marker date="1495999288304" expanded="true" signature="192:256" placeholder="INSERT INTO ngc_config... " />
+            <marker date="1496035923365" expanded="true" signature="87:168" placeholder="CREATE TABLE... ngc_config" />
+            <marker date="1496035923365" expanded="true" signature="192:255" placeholder="INSERT INTO ngc_config... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ngc-loading.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.cron.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ngcApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3332">
+          <caret line="230" column="35" selection-start-line="230" selection-start-column="35" selection-end-line="230" selection-end-column="35" />
+          <folding>
+            <element signature="e#3879#4183#0" expanded="false" />
+            <element signature="e#4214#4433#0" expanded="false" />
+            <element signature="e#4464#4674#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/WYSIWYGEditor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Configuration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="59" column="14" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Grid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+          <folding>
+            <marker date="1496070129636" expanded="true" signature="111:132" placeholder="DELETE FROM " />
+            <marker date="1496070129636" expanded="true" signature="111:183" placeholder="DELETE FROM " />
+            <marker date="1496070129636" expanded="true" signature="219:284" placeholder="SELECT COUNT... ngc_session" />
+            <marker date="1496070129636" expanded="true" signature="716:753" placeholder="SELECT text ngc_template" />
+            <marker date="1496070129636" expanded="true" signature="788:837" placeholder="SELECT value... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="2685:2734" placeholder="SELECT * FRO... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="3369:3411" placeholder="UPDATE ngc_t... " />
+            <marker date="1496070129636" expanded="true" signature="3459:3496" placeholder="SELECT text ngc_template" />
+            <marker date="1496070129636" expanded="true" signature="3531:3580" placeholder="SELECT value... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="4388:4552" placeholder="SELECT idCus... " />
+            <marker date="1496070129636" expanded="true" signature="5228:5261" placeholder="SELECT COUNT... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="7485:7671" placeholder="UPDATE ngc_c... " />
+            <marker date="1496070129636" expanded="true" signature="7734:7778" placeholder="SELECT * FRO... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="8123:8302" placeholder="INSERT INTO ngc_customer... " />
+            <marker date="1496070129636" expanded="true" signature="8347:8409" placeholder="SELECT * FRO... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="8911:8953" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/003_add_template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="173" selection-start-line="6" selection-start-column="173" selection-end-line="6" selection-end-column="173" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/004_AddConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="88" selection-start-line="7" selection-start-column="88" selection-end-line="7" selection-end-column="88" />
+          <folding>
+            <marker date="1496035923365" expanded="true" signature="87:168" placeholder="CREATE TABLE... ngc_config" />
+            <marker date="1496035923365" expanded="true" signature="192:255" placeholder="INSERT INTO ngc_config... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ngc-loading.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.cron.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ngcApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3879#4183#0" expanded="false" />
+            <element signature="e#4214#4433#0" expanded="false" />
+            <element signature="e#4464#4674#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Configuration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Grid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7871">
+          <caret line="463" column="16" selection-start-line="463" selection-start-column="16" selection-end-line="463" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.cron.task.php" />
+    <entry file="file://$PROJECT_DIR$/migrations/006_Add_NGC_Session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="40" column="15" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Editor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-migrations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="26" column="46" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.mail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-292">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.install.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/003_add_template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="173" selection-start-line="6" selection-start-column="173" selection-end-line="6" selection-end-column="173" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Grid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ngc-loading.template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.cron.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="60" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ngc-cumples.api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+          <folding>
+            <marker date="1496070129636" expanded="true" signature="111:132" placeholder="DELETE FROM " />
+            <marker date="1496070129636" expanded="true" signature="111:183" placeholder="DELETE FROM " />
+            <marker date="1496070129636" expanded="true" signature="219:284" placeholder="SELECT COUNT... ngc_session" />
+            <marker date="1496070129636" expanded="true" signature="716:753" placeholder="SELECT text ngc_template" />
+            <marker date="1496070129636" expanded="true" signature="788:837" placeholder="SELECT value... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="2685:2734" placeholder="SELECT * FRO... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="3369:3411" placeholder="UPDATE ngc_t... " />
+            <marker date="1496070129636" expanded="true" signature="3459:3496" placeholder="SELECT text ngc_template" />
+            <marker date="1496070129636" expanded="true" signature="3531:3580" placeholder="SELECT value... ngc_config" />
+            <marker date="1496070129636" expanded="true" signature="4388:4552" placeholder="SELECT idCus... " />
+            <marker date="1496070129636" expanded="true" signature="5228:5261" placeholder="SELECT COUNT... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="7485:7671" placeholder="UPDATE ngc_c... " />
+            <marker date="1496070129636" expanded="true" signature="7734:7778" placeholder="SELECT * FRO... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="8123:8302" placeholder="INSERT INTO ngc_customer... " />
+            <marker date="1496070129636" expanded="true" signature="8347:8409" placeholder="SELECT * FRO... ngc_customer" />
+            <marker date="1496070129636" expanded="true" signature="8911:8953" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/004_AddConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="88" selection-start-line="7" selection-start-column="88" selection-end-line="7" selection-end-column="88" />
+          <folding>
+            <marker date="1496035923365" expanded="true" signature="87:168" placeholder="CREATE TABLE... ngc_config" />
+            <marker date="1496035923365" expanded="true" signature="192:255" placeholder="INSERT INTO ngc_config... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Configuration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="59" column="14" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/WYSIWYGEditor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ngcApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3332">
+          <caret line="230" column="35" selection-start-line="230" selection-start-column="35" selection-end-line="230" selection-end-column="35" />
+          <folding>
+            <element signature="e#3879#4183#0" expanded="false" />
+            <element signature="e#4214#4433#0" expanded="false" />
+            <element signature="e#4464#4674#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="443" column="24" selection-start-line="443" selection-start-column="24" selection-end-line="443" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

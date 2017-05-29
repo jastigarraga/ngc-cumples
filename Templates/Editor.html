@@ -1,4 +1,11 @@
 <div>
 	<h2>Plantilla</h2>
 </div>
-<div ngc-editor ng-model="plantilla"></div>
+<div class="editor-wrapper">
+	<div ngc-editor ng-model="plantilla"></div>
+	<ul ng-non-bindable>
+		<li>{{0}}=>Nombre</li>
+		<li>{{1}}=>Primer Apellido</li>
+		<li>{{2}}=>Segundo Apellido</li>
+	</ul>
+</div>

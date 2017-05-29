@@ -72,41 +72,41 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 			{
 				name:"name",
 				header:"Nombre",
-				colWidth:"150px",
+				class:"col150",
 				templateUrl:tediturl("BaseCellTemplate.html"),
 				editTemplateUrl:tediturl("BaseCellEditTemplate.html")
 			},
 			{
 				name:"surname1",
 				header: "Primer Apellido",
-				colWidth:"200px",
+				class:"col200",
 				templateUrl:tediturl("BaseCellTemplate.html"),
 				editTemplateUrl:tediturl("BaseCellEditTemplate.html")
 			},
 			{
 				name:"surname2",
 				header:"Segundo Apellido",
-				colWidth:"200px",
+				class:"col200",
 				templateUrl:tediturl("BaseCellTemplate.html"),
 				editTemplateUrl:tediturl("BaseCellEditTemplate.html")
 			},
 			{
 				name:"email",
 				hedaer:"Correo",
-				colWidth:"200px",
+				class:"col200",
 				templateUrl:tediturl("BaseCellTemplate.html"),
 				editTemplateUrl:tediturl("BaseEmailTemplate.html")
 			},
 			{
 				name:"date",
 				header:"Fecha",
-				colWidth:"140px",
+				class:"col140",
 				templateUrl:tediturl("BaseDateTemplate.html"),
 				editTemplateUrl:tediturl("BaseDateEditTemplate.html")
 			},{
 				name:"last_sent",
 				header:"Enviado en",
-				colWidth:"140px",
+				class:"col140",
 				templateUrl:tediturl("BaseDateTemplate.html"),
 				editTemplateUrl:tediturl("BaseDateTemplate.html")
 			}
@@ -114,11 +114,11 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 		pageSize:"5",
 		page:1,
 		pageSizes: [{
-			value:"5",
+			value:"5"
 		},{
-			value:"10",
+			value:"10"
 		},{
-			value:"20",
+			value:"20"
 		},{
 			value:"",
 			text:"Todos"
@@ -143,7 +143,18 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 				mailConf.mail_port = Number(mailConf.mail_port);
 			}
 			$scope.mail = mailConf;
-			$scope.cron = response.data.cron;
+			var cron = response.data.cron;
+			if(typeof(cron.h) !== "undefined"){
+				var time = new Date();
+				time.setHours(cron.h);
+				time.setMinutes(cron.m);
+				time.setSeconds(0);
+				time.setMilliseconds(0);
+				cron.h = time;
+			}
+			cron.interval = Number(cron.interval);
+			cron.duration = Number(cron.duration);
+			$scope.cron = cron;
 			$scope.loading = false;
 		},function(error){})
 	}
@@ -178,7 +189,11 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 		$http({
 			url:apiurl("SaveCronConfig"),
 			method:"POST",
-			data:{h:angular.element("#ngc_cron_h").val()}
+			data:{
+				h:angular.element("#ngc_cron_h").val(),
+				interval:$scope.cron.interval,
+				duration:$scope.cron.duration
+			}
 		}).then(load);
 	};
 }])
@@ -193,6 +208,28 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 		link:function(s,e,a,c){
 			s.iframe = e.find("iframe")[0];
 			s.doc = s.iframe.contentDocument;
+			function checkParams(){
+				var selection = s.doc.getSelection();
+				var node = selection.anchorNode;
+				while(node.nodeType !== 1){
+					node = node.parentNode;
+				}
+				var element = angular.element(node);
+				var fontSize = element.closest("font[size]").attr("size") || "3";
+				var foreColor = element.closest("font[color]").attr("color") || "#000000";
+				var fontName = element.css("font-family").split("\"").join("");
+				var isBold = element.css("font-weight") == "bold";
+				s.$apply(function(){
+					s.fontName = fontName;
+					s.fontSize = fontSize;
+					s.foreColor = foreColor;
+					s.isBold = isBold;
+				});
+			}
+			angular.element(s.doc.body).on("click keyup",checkParams);
+			s.foreColor = "#000000";
+			s.fontName ="Times New Roman";
+			s.fontSize = "3";
 			s.doc.designMode = "on";
 			s.fonts = ["Georgia","Book Antiqua","Times New Roman","Arial","Arial Black","Comic Sans MS","Impact","Tahoma",
 			"Helvetica","Verdana","Courier New","Lucida Console" ];
@@ -201,6 +238,10 @@ angular.module("ngcApp",["ngRoute","ngAnimate"])
 				evt.preventDefault();
 				evt.stopPropagation();
 				s.iframe.focus();
+			}
+			function calculateActiveParams(){
+				var selection = doc.getSelection();
+				var anchorNode = doc.anchorNode;
 			}
 			s.textMode = function(value){
 				s.htmlMode = !value;

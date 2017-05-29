@@ -347,10 +347,10 @@
 }
 .conf-form .form-group
 .conf-form input, .conf-form select{
-	flex:2;	
+	flex: 1 1 75%;
 }
 .conf-form label{
-	flex:1;
+	flex:1 1 25%;
 }
 .conf-form .form-group>span{
 	flex:1;
@@ -440,6 +440,9 @@ span.validation-error.ng-hide-remove{
 .editor-wrapper>*:first-child{
 	flex:1
 }
+.ngc-table td:last-child{
+	white-space: nowrap;
+}
 .editor-wrapper>*:not(:first-child){
 	padding: 2em 1em;
 }
@@ -450,4 +453,16 @@ span.validation-error.ng-hide-remove{
 	100%{
 		transform: rotateX(360deg);
 	}
+}
+.col100{
+	width: 100px;
+}
+.col140{
+	width:140px;
+}
+.col200{
+	width:200px;
+}
+.col150{
+	width:150px;
 }

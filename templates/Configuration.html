@@ -50,11 +50,15 @@
 	<h2>Configuración Cron</h2>
 	<div class="form-group">
 		<label for="ngc_cron_h">Hora</label>
-		<input type="time" id="ngc_cron_h" ng-model="cron.h"/>
+		<input type="time" class="ngc-input" id="ngc_cron_h" ng-model="cron.h"/>
 	</div>
 	<div class="form-group">
-		<label>Intentos</label>
-		<input type="number"/>
+		<label>Intervalo</label>
+		<input type="number" class="ngc-input" ng-model="cron.interval"/>
+	</div>
+	<div class="form-group">
+		<label>Duración</label>
+		<input type="number" class="ngc-input" ng-model="cron.duration"/>
 	</div>
 	<span ng-click="saveCron()" class="btn btn-default">Guardar</span>
 </form>

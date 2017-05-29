@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!function_exists("add_action")){
 	die("No se puede ejecutar el plugin sin wordpress");
 }
@@ -9,7 +10,6 @@ function ngc_main(){
 <?php 
 	readfile(plugin_dir_path(__FILE__)."templates/index.html");
     if(is_admin()){
-        session_start();
         $session_id = session_id();
         $wpdb->query("REPLACE INTO ngc_session (session_id) VALUES ('$session_id')");
     }
