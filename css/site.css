@@ -247,6 +247,9 @@
     width: 100%;
     border-radius: 3px;
 }
+form .ngc-input {
+	width: 75%;
+}
 [ngc-editor] iframe{
 	background-color: white;
 	flex:1 1 300px;
@@ -345,15 +348,18 @@
 	padding: 2em 1em;
 	margin: 1em;
 }
-.conf-form .form-group
 .conf-form input, .conf-form select{
-	flex: 1 1 75%;
+	flex: 1 1 67%;
 }
 .conf-form label{
 	flex:1 1 25%;
 }
 .conf-form .form-group>span{
 	flex:1;
+}
+.conf-form h2{
+	text-align: center;
+	align-self: stretch;
 }
 span.validation-error {
 	text-align: left;
@@ -429,6 +435,7 @@ span.validation-error.ng-hide-remove{
 	font-weight: bold;
 	color:black;
 }
+
 [ngc-loading] span{
 	animation: rotating 1s infinite;
 	transform-origin: center;

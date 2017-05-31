@@ -17,15 +17,15 @@ class NGC_Cron {
 		exec("rm crontab.tmp*");
 	}
 	public function apply(){
-		exec("touch crontab.tmp");
+		exec("touch crontab.tmp2");
 		foreach($this->content as $cont){
 			if(trim($cont) !== ""){
 				exec("echo \"$cont\n\" >> crontab.tmp");
 			}
 		}
-		exec("echo \"" . $this->entry->render() . "\" >> crontab.tmp");
-		exec("crontab crontab.tmp");
-		exec("rm crontab.tmp");
+		exec("echo \"" . $this->entry->render() . "\" >> crontab.tmp2");
+		exec("crontab crontab.tmp2");
+		exec("rm crontab.tmp2");
 	}
 }
 class NGC_Cron_Entry {
@@ -33,8 +33,8 @@ class NGC_Cron_Entry {
 	public function render(){
 		$h = $this->h;
 		$m = $this->m;
-		$d = isset($this->duration) && $this->duration!=0?"-".$this->duration:"";
-		$i = isset($this->interval) && $this->interval!=1?"/".$this->interval:"";
+		$d = (isset($this->duration) && $this->duration!=1?("-".(intval($this->duration)-1+intval($this->h))):"");
+		$i = (isset($this->interval) && $this->interval!=0?("/".$this->interval):"");
 		$p = $this->cron->path;
 		return "$m$i $h$d * * * $p";
 	}
@@ -46,7 +46,7 @@ class NGC_Cron_Entry {
 		$this->interval = isset($p[1])?$p[1]:0;
 		$p = explode("-",$params[1]);
 		$this->h = $p[0];
-		$this->duration = isset($p[1])?$p[1]:1;
+		$this->duration = isset($p[1])?(intval($p[1])-intval($this->h)+1):1;
 	}
 	public function get(){
 		return [
